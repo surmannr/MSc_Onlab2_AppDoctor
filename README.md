@@ -1,2 +1,1 @@
-# MSc_Onlab2_AppDoctor
-BME MSc Önlab2
+# MSc Önálló labor 2 - AppDoctor
