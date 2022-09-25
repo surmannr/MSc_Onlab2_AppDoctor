@@ -1,0 +1,59 @@
+Table appdoc.user {
+  id string
+  firstname string
+  lastname string
+  nameprefix string
+  birthdate datetime
+  role string
+  address Address
+}
+
+Table appdoc.examinationreservation {
+  id string
+  doc_id string
+  patient_id string
+  date datetime
+  is_accepted boolean [default: false]
+  patient_problem string
+  is_resolved boolean [default: false]
+}
+// > many-to-one; < one-to-many; - one-to-one; <> many-to-many
+Ref: appdoc.user.id < appdoc.examinationreservation.doc_id 
+Ref: appdoc.user.id < appdoc.examinationreservation.patient_id
+
+Table appdoc.referral {
+  id string
+  doc_id string
+  patient_id string
+  examinationreservation_id string
+  diagnoses string
+}
+
+Ref: appdoc.user.id < appdoc.referral.doc_id 
+Ref: appdoc.user.id < appdoc.referral.patient_id
+Ref: appdoc.examinationreservation.id - appdoc.referral.examinationreservation_id
+
+Table appdoc.receipt {
+  id string
+  doc_id string
+  patient_id string
+  date datetime
+}
+
+Table appdoc.medicine {
+  id string
+  name string
+  effect string
+  quantity int
+}
+
+Table appdoc.receipt_medicine {
+  receipt_id string
+  medicine_id string
+  quantity int
+}
+
+Ref: appdoc.receipt.id < appdoc.receipt_medicine.receipt_id 
+Ref: appdoc.medicine.id < appdoc.receipt_medicine.medicine_id 
+Ref: appdoc.user.id < appdoc.receipt.doc_id 
+Ref: appdoc.user.id < appdoc.receipt.patient_id
