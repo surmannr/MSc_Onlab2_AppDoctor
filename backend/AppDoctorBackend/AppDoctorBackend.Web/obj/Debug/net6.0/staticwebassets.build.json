@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "43drIADhy0YH4AvW+n3Sb3E6q/4smLouPuFcnCvWSyE=",
+  "Source": "AppDoctorBackend.Web",
+  "BasePath": "_content/AppDoctorBackend.Web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
