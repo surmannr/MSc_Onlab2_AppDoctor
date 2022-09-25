@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppDoctorBackend.Infrastructure.DomainModels
 {
-    public class Receipt : BaseService<Guid, User, Guid>
+    public class Receipt : BaseService<string, User, Guid>
     {
         public DateTime Date { get; set; }
 

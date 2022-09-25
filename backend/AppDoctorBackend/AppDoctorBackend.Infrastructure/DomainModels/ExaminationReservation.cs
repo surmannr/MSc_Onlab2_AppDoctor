@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppDoctorBackend.Infrastructure.DomainModels
 {
-    public class ExaminationReservation : BaseService<Guid, User, Guid>
+    public class ExaminationReservation : BaseService<string, User, Guid>
     {
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
