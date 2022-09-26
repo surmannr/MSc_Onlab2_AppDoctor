@@ -1,3 +1,5 @@
+using AppDoctorBackend.ApplicationCore.Extensions;
+using AppDoctorBackend.ApplicationCore.Mapper;
 using AppDoctorBackend.Infrastructure;
 using AppDoctorBackend.Infrastructure.DomainModels;
 using AppDoctorBackend.Infrastructure.Extensions;
@@ -5,9 +7,13 @@ using AppDoctorBackend.Infrastructure.Repositories;
 using AppDoctorBackend.Infrastructure.Repositories.Implementation;
 using AppDoctorBackend.Infrastructure.Repositories.Interfaces;
 using AppDoctorBackend.Infrastructure.Repositories.UOW;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace AppDoctorBackend.Web
 {
@@ -49,6 +55,28 @@ namespace AppDoctorBackend.Web
             builder.Services.AddTransient<IUserRepository, UserRepository>();
 
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+            #endregion
+
+            #region Automapper
+            builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+            #endregion
+
+            #region Business logic services (CQRS)
+            //builder.Services.AddMediatR(typeof(GetAllEventsQuery));
+            builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
+            #endregion
+
+            #region Autofac
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+            {
+                builder.RegisterAssemblyTypes(Assembly.Load("AppDoctorBackend.ApplicationCore"))
+                    .Where(x => x.Name.EndsWith("Validator"))
+                    .AsImplementedInterfaces()
+                    .InstancePerDependency();
+
+            });
+            
             #endregion
 
             builder.Services.AddControllers();
