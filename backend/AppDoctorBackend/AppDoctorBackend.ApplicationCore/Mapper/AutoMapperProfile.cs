@@ -40,6 +40,7 @@ namespace AppDoctorBackend.ApplicationCore.Mapper
 
             CreateMap<Receipt, ReceiptDto>()
                 .ForMember(erDto => erDto.DoctorFullName, er => er.MapFrom(e => $"{e.Doctor.NamePrefix} {e.Doctor.LastName} {e.Doctor.FirstName}"))
+                .ForMember(erDto => erDto.Medicines, er => er.MapFrom(e => e.ReceiptMedicines.Select(x => x.Medicine)))
                 .ForMember(erDto => erDto.PatientFullName, er => er.MapFrom(e => $"{e.Patient.NamePrefix} {e.Patient.LastName} {e.Patient.FirstName}"));
 
             CreateMap<Referral, ReferralDto>()

@@ -9,5 +9,6 @@ namespace AppDoctorBackend.Infrastructure.Repositories.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User, string>
     {
+        List<User> FindByRole(string role);
     }
 }

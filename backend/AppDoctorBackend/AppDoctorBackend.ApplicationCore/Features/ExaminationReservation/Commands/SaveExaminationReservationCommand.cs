@@ -30,7 +30,7 @@ namespace AppDoctorBackend.ApplicationCore.Features.ExaminationReservation.Comma
                 _unitOfWork = unitOfWork;
             }
 
-            public Task<bool> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<bool> Handle(Command request, CancellationToken cancellationToken)
             {
                 var doctor = _unitOfWork.UserRepository.GetById(request.SendExaminationReservation.DoctorId);
                 var patient = _unitOfWork.UserRepository.GetById(request.SendExaminationReservation.PatientId);
@@ -44,6 +44,7 @@ namespace AppDoctorBackend.ApplicationCore.Features.ExaminationReservation.Comma
                 {
                     IsAccepted = false,
                     IsResolved = false,
+                    IsDeleted = false,
                     DateFrom = request.SendExaminationReservation.DateFrom,
                     DateTo = request.SendExaminationReservation.DateTo,
                     DoctorId = request.SendExaminationReservation.DoctorId,
@@ -51,7 +52,9 @@ namespace AppDoctorBackend.ApplicationCore.Features.ExaminationReservation.Comma
                     PatientProblem = request.SendExaminationReservation.PatientProblem
                 });
 
-                return Task.FromResult(true);
+                await _unitOfWork.SaveChangesAsync();
+
+                return true;
             }
         }
 
