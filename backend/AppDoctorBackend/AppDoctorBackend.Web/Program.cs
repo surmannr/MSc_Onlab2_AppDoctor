@@ -1,6 +1,10 @@
 using AppDoctorBackend.Infrastructure;
 using AppDoctorBackend.Infrastructure.DomainModels;
 using AppDoctorBackend.Infrastructure.Extensions;
+using AppDoctorBackend.Infrastructure.Repositories;
+using AppDoctorBackend.Infrastructure.Repositories.Implementation;
+using AppDoctorBackend.Infrastructure.Repositories.Interfaces;
+using AppDoctorBackend.Infrastructure.Repositories.UOW;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +17,7 @@ namespace AppDoctorBackend.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            #region DatabaseConfiguration
             // Add services to the container.
             builder.Services.AddDbContext<AppDoctorDbContext>(options =>
                 {
@@ -33,6 +38,18 @@ namespace AppDoctorBackend.Web
 
                 opts.SignIn.RequireConfirmedEmail = true;
             });
+            #endregion
+
+            #region Repositories
+            builder.Services.AddTransient(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
+            builder.Services.AddTransient<IExaminationReservationRepository, ExaminationReservationRepository>();
+            builder.Services.AddTransient<IMedicineRepository, MedicineRepository>();
+            builder.Services.AddTransient<IReceiptRepository, ReceiptRepository>();
+            builder.Services.AddTransient<IReferralRepository, ReferralRepository>();
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
+
+            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+            #endregion
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
