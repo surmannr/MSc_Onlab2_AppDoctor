@@ -19,6 +19,7 @@ namespace AppDoctorBackend.Infrastructure.SeedEntityConfigurations
                     Id = Guid.NewGuid(),
                     DoctorId = "user2",
                     PatientId = "user8",
+                    ExaminationDate = DateTime.Now.AddDays(6),
                     ExaminationReservationId = Guid.Parse("af378505-14cb-4f49-1111-ba2c8fdef77d"),
                     Diagnoses = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate nunc eget erat venenatis, non lobortis arcu lacinia. Suspendisse faucibus sagittis magna, in rhoncus eros ultrices eget. Nullam vitae nulla eu lorem tempus placerat."
                 }
