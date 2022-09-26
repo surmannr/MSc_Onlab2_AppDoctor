@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppDoctorBackend.Infrastructure.DomainModels
+namespace AppDoctorBackend.ApplicationCore.Dto
 {
-    public class Referral : BaseService<string, User, Guid>
+    public class SendReferralDto
     {
-        [ForeignKey("ExaminationReservation")]
         public Guid ExaminationReservationId { get; set; }
-        public ExaminationReservation ExaminationReservation { get; set; }
 
         public string Diagnoses { get; set; }
         public DateTime ExaminationDate { get; set; }
+
     }
 }
