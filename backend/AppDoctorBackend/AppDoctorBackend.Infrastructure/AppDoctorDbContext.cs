@@ -1,5 +1,6 @@
 ﻿using AppDoctorBackend.Infrastructure.DomainModels;
 using AppDoctorBackend.Infrastructure.Extensions;
+using AppDoctorBackend.Infrastructure.SeedEntityConfigurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -43,6 +44,8 @@ namespace AppDoctorBackend.Infrastructure
 
             builder.Entity<User>()
                 .UserConfiguration();
+
+            builder.ApplyConfigurationsInOrder();
         }
     }
 }

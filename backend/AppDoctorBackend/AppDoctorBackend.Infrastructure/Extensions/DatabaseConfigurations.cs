@@ -9,11 +9,24 @@ using AppDoctorBackend.Infrastructure.DomainModels;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using AppDoctorBackend.Shared.Enums;
 using System.Reflection.Emit;
+using AppDoctorBackend.Infrastructure.SeedEntityConfigurations;
 
 namespace AppDoctorBackend.Infrastructure.Extensions
 {
     public static class DatabaseConfigurations
     {
+        public static void ApplyConfigurationsInOrder(this ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new UserEntityConfiguration());
+            builder.ApplyConfiguration(new RoleEntityConfiguration());
+            builder.ApplyConfiguration(new UserRoleEntityConfiguration());
+            builder.ApplyConfiguration(new MedicineEntityConfiguration());
+            builder.ApplyConfiguration(new ExaminationReservationEntityConfiguration());
+            builder.ApplyConfiguration(new ReferralEntityConfiguration());
+            builder.ApplyConfiguration(new ReceiptEntityConfiguration());
+            builder.ApplyConfiguration(new ReceiptMedicineEntityConfiguration());
+        }
+
         public static EntityTypeBuilder<Medicine> MedicineConfiguration(this EntityTypeBuilder<Medicine> builder)
         {
             builder.HasQueryFilter(b => !b.IsDeleted);
