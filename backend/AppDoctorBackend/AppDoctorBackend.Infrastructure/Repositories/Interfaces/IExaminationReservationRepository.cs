@@ -9,5 +9,6 @@ namespace AppDoctorBackend.Infrastructure.Repositories.Interfaces
 {
     public interface IExaminationReservationRepository : IBaseRepository<ExaminationReservation, Guid>
     {
+        
     }
 }

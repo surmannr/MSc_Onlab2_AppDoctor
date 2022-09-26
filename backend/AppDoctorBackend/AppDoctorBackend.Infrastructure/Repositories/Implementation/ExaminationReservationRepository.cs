@@ -10,9 +10,10 @@ namespace AppDoctorBackend.Infrastructure.Repositories.Implementation
 {
     public class ExaminationReservationRepository : BaseRepository<ExaminationReservation, Guid>, IExaminationReservationRepository
     {
+        private readonly AppDoctorDbContext _dbContext;
         public ExaminationReservationRepository(AppDoctorDbContext dbContext) : base(dbContext)
         {
-
+            _dbContext = dbContext;
         }
     }
 }

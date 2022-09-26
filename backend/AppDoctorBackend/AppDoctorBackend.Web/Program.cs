@@ -1,4 +1,5 @@
 using AppDoctorBackend.ApplicationCore.Extensions;
+using AppDoctorBackend.ApplicationCore.Features.ExaminationReservation.Queries;
 using AppDoctorBackend.ApplicationCore.Mapper;
 using AppDoctorBackend.Infrastructure;
 using AppDoctorBackend.Infrastructure.DomainModels;
@@ -62,7 +63,7 @@ namespace AppDoctorBackend.Web
             #endregion
 
             #region Business logic services (CQRS)
-            //builder.Services.AddMediatR(typeof(GetAllEventsQuery));
+            builder.Services.AddMediatR(typeof(GetAllExaminationReservationByDoctorIdQuery));
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
             #endregion
 
