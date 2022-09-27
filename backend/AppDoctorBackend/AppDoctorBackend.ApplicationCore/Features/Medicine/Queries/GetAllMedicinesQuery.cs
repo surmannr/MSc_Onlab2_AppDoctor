@@ -15,12 +15,12 @@ namespace AppDoctorBackend.ApplicationCore.Features.Medicine.Queries
 {
     public static class GetAllMedicinesQuery
     {
-        public class Query : IRequest<List<MedicineDto>>
+        public class Query : IRequest<List<MedicinePreviewDto>>
         {
 
         }
 
-        public class Handler : IRequestHandler<Query, List<MedicineDto>>
+        public class Handler : IRequestHandler<Query, List<MedicinePreviewDto>>
         {
             private readonly IMapper _mapper;
             private readonly IUnitOfWork _unitOfWork;
@@ -30,12 +30,12 @@ namespace AppDoctorBackend.ApplicationCore.Features.Medicine.Queries
                 _unitOfWork = unitOfWork;
             }
 
-            public Task<List<MedicineDto>> Handle(Query request, CancellationToken cancellationToken)
+            public Task<List<MedicinePreviewDto>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var medicines = _unitOfWork.MedicineRepository
                     .GetAll()
                     .AsQueryable()
-                    .ProjectTo<MedicineDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<MedicinePreviewDto>(_mapper.ConfigurationProvider)
                     .ToList();
 
                 return Task.FromResult(medicines);

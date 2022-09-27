@@ -37,6 +37,7 @@ namespace AppDoctorBackend.ApplicationCore.Mapper
             CreateMap<Medicine, MedicineDetailsDto>()
                 .ForMember(medDto => medDto.DiseasesGoodFor, med => med.MapFrom(e => DiseaseValues(e.DiseasesGoodFor)));
             CreateMap<Medicine, MedicineDto>();
+            CreateMap<Medicine, MedicinePreviewDto>();
 
             CreateMap<Receipt, ReceiptDto>()
                 .ForMember(erDto => erDto.DoctorFullName, er => er.MapFrom(e => $"{e.Doctor.NamePrefix} {e.Doctor.LastName} {e.Doctor.FirstName}"))
