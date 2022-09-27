@@ -39,9 +39,13 @@ namespace AppDoctorBackend.ApplicationCore.Mapper
             CreateMap<Medicine, MedicineDto>();
             CreateMap<Medicine, MedicinePreviewDto>();
 
+            CreateMap<ReceiptMedicine, MedicineDto>()
+                .ForMember(erDto => erDto.Id, er => er.MapFrom(e => e.MedicineId))
+                .ForMember(erDto => erDto.Name, er => er.MapFrom(e => e.Medicine.Name))
+                .ForMember(erDto => erDto.Quantity, er => er.MapFrom(e => e.Quantity));
             CreateMap<Receipt, ReceiptDto>()
                 .ForMember(erDto => erDto.DoctorFullName, er => er.MapFrom(e => $"{e.Doctor.NamePrefix} {e.Doctor.LastName} {e.Doctor.FirstName}"))
-                .ForMember(erDto => erDto.Medicines, er => er.MapFrom(e => e.ReceiptMedicines.Select(x => x.Medicine)))
+                .ForMember(erDto => erDto.Medicines, er => er.MapFrom(e => e.ReceiptMedicines))
                 .ForMember(erDto => erDto.PatientFullName, er => er.MapFrom(e => $"{e.Patient.NamePrefix} {e.Patient.LastName} {e.Patient.FirstName}"));
 
             CreateMap<Referral, ReferralDto>()

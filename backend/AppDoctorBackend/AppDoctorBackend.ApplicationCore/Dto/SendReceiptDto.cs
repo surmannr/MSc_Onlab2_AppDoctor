@@ -8,7 +8,6 @@ namespace AppDoctorBackend.ApplicationCore.Dto
 {
     public class SendReceiptDto
     {
-        public Guid Id { get; set; }
         public DateTime Date { get; set; }
 
         public string PatientId { get; set; }
