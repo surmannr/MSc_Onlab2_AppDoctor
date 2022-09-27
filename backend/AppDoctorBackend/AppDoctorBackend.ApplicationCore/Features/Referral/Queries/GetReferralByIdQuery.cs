@@ -3,6 +3,7 @@ using AppDoctorBackend.Infrastructure.Repositories.UOW;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace AppDoctorBackend.ApplicationCore.Features.Referral.Queries
             {
                 var referral = _unitOfWork.ReferralRepository
                     .Find(m => m.Id == request.Id)
+                    .AsQueryable()
+                    .Include(e => e.ExaminationReservation)
                     .FirstOrDefault();
 
                 if (referral == null)
