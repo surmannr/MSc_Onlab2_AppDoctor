@@ -32,9 +32,6 @@ jobs:
       - name: Flutter packages
         run: flutter pub get
         working-directory: frontend/appdoctor
-      - name: Flutter analyze
-        run: flutter analyze
-        working-directory: frontend/appdoctor
       - name: Flutter run tests
         run: flutter test
         working-directory: frontend/appdoctor
