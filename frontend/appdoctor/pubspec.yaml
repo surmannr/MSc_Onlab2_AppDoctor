@@ -41,6 +41,9 @@ dependencies:
   freezed: ^2.1.1
   freezed_annotation: ^2.1.0
   json_annotation: ^4.7.0
+  http: ^0.13.5
+  hydrated_bloc: ^8.1.0
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

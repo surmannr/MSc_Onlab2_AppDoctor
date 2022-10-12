@@ -15,7 +15,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
-  String? _userEmail = "";
+  String? _userName = "";
   String? _userPassword = "";
 
   void _trySubmit() {
@@ -24,7 +24,7 @@ class _LoginFormState extends State<LoginForm> {
 
     if (isValid != null && isValid) {
       _formKey.currentState?.save();
-      widget.submitLogin(_userEmail!, _userPassword!);
+      widget.submitLogin(_userName!, _userPassword!);
     }
   }
 
@@ -40,18 +40,18 @@ class _LoginFormState extends State<LoginForm> {
           children: [
             TextFormField(
               validator: (value) {
-                if (value == null || value.isEmpty || !value.contains('@')) {
-                  return "A belépéshez email szükséges!";
+                if (value == null || value.isEmpty) {
+                  return "A belépéshez felhasználónév szükséges!";
                 }
                 return null;
               },
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.text,
               decoration: WidgetStyle.textFormFieldInputDecoration(
-                "Email cím",
-                Icons.email,
+                "Név",
+                Icons.person,
               ),
               onSaved: (value) {
-                _userEmail = value;
+                _userName = value;
               },
             ),
             const SizedBox(

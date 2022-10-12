@@ -1,5 +1,3 @@
-import 'package:appdoctor/models/medicine/medicine.dart';
-import 'package:appdoctor/models/medicine/medicine_preview.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 

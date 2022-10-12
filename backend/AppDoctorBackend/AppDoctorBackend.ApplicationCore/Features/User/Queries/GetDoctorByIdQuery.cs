@@ -37,8 +37,11 @@ namespace AppDoctorBackend.ApplicationCore.Features.User.Queries
                     .Find(doc => doc.Id == request.DoctorId)
                     .AsQueryable()
                     .Include(e => e.DoctorsExaminationReservations)
+                        .ThenInclude(e => e.Patient)
                     .Include(e => e.DoctorsReceipts)
+                        .ThenInclude(e => e.Patient)
                     .Include(e => e.DoctorsReferrals)
+                        .ThenInclude(e => e.Patient)
                     .FirstOrDefault();
 
                 if (doctor == null)

@@ -68,5 +68,17 @@ namespace AppDoctorBackend.Web.Controllers
             };
             return await mediator.Send(query);
         }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<string> Login([FromBody] LoginDto loginDto)
+        {
+            var query = new LoginCommand.Command()
+            {
+                UserName = loginDto.UserName,
+                Password = loginDto.Password,
+            };
+            return await mediator.Send(query);
+        }
     }
 }

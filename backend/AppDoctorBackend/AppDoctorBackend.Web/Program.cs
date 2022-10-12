@@ -1,5 +1,6 @@
 using AppDoctorBackend.ApplicationCore.Extensions;
 using AppDoctorBackend.ApplicationCore.Features.ExaminationReservation.Queries;
+using AppDoctorBackend.ApplicationCore.Features.User.Commands;
 using AppDoctorBackend.ApplicationCore.Mapper;
 using AppDoctorBackend.Infrastructure;
 using AppDoctorBackend.Infrastructure.DomainModels;
@@ -25,6 +26,7 @@ using NSwag.AspNetCore;
 using NSwag.Generation.Processors.Security;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using System.Security.Authentication;
 
 namespace AppDoctorBackend.Web
 {
@@ -62,7 +64,7 @@ namespace AppDoctorBackend.Web
             builder.Services.Configure<IdentityOptions>(opts =>
             {
                 opts.User.RequireUniqueEmail = true;
-                opts.Password.RequiredLength = 8;
+                opts.Password.RequiredLength = 7;
 
                 opts.SignIn.RequireConfirmedEmail = true;
             });
@@ -85,6 +87,7 @@ namespace AppDoctorBackend.Web
 
             #region Business logic services (CQRS)
             builder.Services.AddMediatR(typeof(GetAllExaminationReservationByDoctorIdQuery));
+            builder.Services.AddMediatR(typeof(LoginCommand));
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
             builder.Services.AddHttpContextAccessor();
@@ -198,7 +201,7 @@ namespace AppDoctorBackend.Web
             app.UseCors("CorsPolicy");
 
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
 
             app.UseOpenApi();
             app.UseSwaggerUi3(options =>
@@ -233,6 +236,14 @@ namespace AppDoctorBackend.Web
               (ctx, ex) =>
               {
                   var pd = StatusCodeProblemDetails.Create(StatusCodes.Status404NotFound);
+                  pd.Title = ex.Message;
+                  return pd;
+              });
+
+            options.Map<AuthenticationException>(
+              (ctx, ex) =>
+              {
+                  var pd = StatusCodeProblemDetails.Create(StatusCodes.Status401Unauthorized);
                   pd.Title = ex.Message;
                   return pd;
               });

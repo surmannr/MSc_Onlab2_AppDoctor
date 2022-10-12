@@ -1,8 +1,11 @@
+import 'package:appdoctor/api/user_api.dart';
+import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
 import 'package:appdoctor/screens/auth/login_form.dart';
 import 'package:appdoctor/screens/auth/registration_form.dart';
 import 'package:appdoctor/screens/welcome_screen.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:status_bar_control/status_bar_control.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -15,21 +18,37 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  void _submitLoginForm(String email, String password) async {
-    String message = "Hiba a bejelentkezés során";
+  void _submitLoginForm(String userName, String password) async {
     try {
-      /* String? userId = await Auth.signInWithEmailAndPassword(email, password, context);
+      String? userIdAndRole = await UserApi.login(userName, password);
+      if (!mounted) return;
+      if (userIdAndRole != null) {
+        // TODO beállítani az értékét a felhasználónak
+        print(userIdAndRole);
+        final user = userIdAndRole.split('|<>|');
+        print(user[0]);
+        print(user[1]);
+        if (user[1].toLowerCase() == "doktor") {
+          print("heereee");
+          BlocProvider.of<DoctorBloc>(context).add(
+            DoctorEvent.loginDoctor(
+              doctorId: user[0],
+            ),
+          );
+        } else {}
 
-      if (userId != null) {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const MainScreen()),
-        );
-      }*/
-      StatusBarControl.setHidden(false);
-      Navigator.pushReplacementNamed(context, WelcomeScreen.routeName);
+        StatusBarControl.setHidden(false);
+        await Navigator.pushReplacementNamed(context, WelcomeScreen.routeName);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: const Text("Hibás felhasználónév vagy jelszó!"),
+          backgroundColor: Colors.red.shade700,
+        ));
+      }
     } catch (err) {
+      print(err);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(message),
+        content: const Text("Hiba a bejelentkezés során."),
         backgroundColor: Colors.red.shade700,
       ));
     }
