@@ -22,7 +22,6 @@ MedicinePreview _$MedicinePreviewFromJson(Map<String, dynamic> json) {
 mixin _$MedicinePreview {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +34,7 @@ abstract class $MedicinePreviewCopyWith<$Res> {
   factory $MedicinePreviewCopyWith(
           MedicinePreview value, $Res Function(MedicinePreview) then) =
       _$MedicinePreviewCopyWithImpl<$Res>;
-  $Res call({int id, String name, int quantity});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -51,7 +50,6 @@ class _$MedicinePreviewCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -62,10 +60,6 @@ class _$MedicinePreviewCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      quantity: quantity == freezed
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -77,7 +71,7 @@ abstract class _$$_MedicinePreviewCopyWith<$Res>
           _$_MedicinePreview value, $Res Function(_$_MedicinePreview) then) =
       __$$_MedicinePreviewCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name, int quantity});
+  $Res call({int id, String name});
 }
 
 /// @nodoc
@@ -95,7 +89,6 @@ class __$$_MedicinePreviewCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? quantity = freezed,
   }) {
     return _then(_$_MedicinePreview(
       id: id == freezed
@@ -106,10 +99,6 @@ class __$$_MedicinePreviewCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      quantity: quantity == freezed
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -119,8 +108,7 @@ class __$$_MedicinePreviewCopyWithImpl<$Res>
 class _$_MedicinePreview
     with DiagnosticableTreeMixin
     implements _MedicinePreview {
-  const _$_MedicinePreview(
-      {required this.id, required this.name, required this.quantity});
+  const _$_MedicinePreview({required this.id, required this.name});
 
   factory _$_MedicinePreview.fromJson(Map<String, dynamic> json) =>
       _$$_MedicinePreviewFromJson(json);
@@ -129,12 +117,10 @@ class _$_MedicinePreview
   final int id;
   @override
   final String name;
-  @override
-  final int quantity;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MedicinePreview(id: $id, name: $name, quantity: $quantity)';
+    return 'MedicinePreview(id: $id, name: $name)';
   }
 
   @override
@@ -143,8 +129,7 @@ class _$_MedicinePreview
     properties
       ..add(DiagnosticsProperty('type', 'MedicinePreview'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('quantity', quantity));
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
@@ -153,8 +138,7 @@ class _$_MedicinePreview
         (other.runtimeType == runtimeType &&
             other is _$_MedicinePreview &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.quantity, quantity));
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @JsonKey(ignore: true)
@@ -162,8 +146,7 @@ class _$_MedicinePreview
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(quantity));
+      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -180,9 +163,7 @@ class _$_MedicinePreview
 
 abstract class _MedicinePreview implements MedicinePreview {
   const factory _MedicinePreview(
-      {required final int id,
-      required final String name,
-      required final int quantity}) = _$_MedicinePreview;
+      {required final int id, required final String name}) = _$_MedicinePreview;
 
   factory _MedicinePreview.fromJson(Map<String, dynamic> json) =
       _$_MedicinePreview.fromJson;
@@ -191,8 +172,6 @@ abstract class _MedicinePreview implements MedicinePreview {
   int get id;
   @override
   String get name;
-  @override
-  int get quantity;
   @override
   @JsonKey(ignore: true)
   _$$_MedicinePreviewCopyWith<_$_MedicinePreview> get copyWith =>

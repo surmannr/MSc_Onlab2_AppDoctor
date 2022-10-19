@@ -7,36 +7,31 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 part 'doctor_event.dart';
 part 'doctor_state.dart';
 part 'doctor_bloc.freezed.dart';
+part 'doctor_bloc.g.dart';
 
 class DoctorBloc extends HydratedBloc<DoctorEvent, DoctorState> {
-  Doctor? loggedInDoctor;
-  DoctorBloc() : super(const _Initial()) {
+  DoctorBloc() : super(const _Loading()) {
     on<_LoginDoctor>(
       (event, emit) async {
-        loggedInDoctor = await UserApi.getDoctorById(event.doctorId);
+        var loggedInDoctor = await UserApi.getDoctorById(event.doctorId);
+        if (loggedInDoctor != null) {
+          emit(_Loaded(loggedInDoctor!));
+        } else {
+          emit(const _Error("Nem sikerült betölteni a felhasználót."));
+        }
       },
     );
-    on<_GetLoggedInDoctor>((event, emit) {
-      emit(const _Loading());
-      if (loggedInDoctor != null) {
-        emit(_Loaded(loggedInDoctor!));
-      } else {
-        emit(const _Error("Nem sikerült betölteni a felhasználót."));
-      }
-    });
   }
 
   @override
   DoctorState? fromJson(Map<String, dynamic> json) {
-    return json['state'] as DoctorState;
+    return DoctorState.fromJson(json);
   }
 
   @override
   Map<String, dynamic>? toJson(DoctorState state) {
     try {
-      return {
-        'state': state.toString(),
-      };
+      return state.toJson();
     } catch (_) {
       return null;
     }

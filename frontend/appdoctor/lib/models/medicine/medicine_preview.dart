@@ -9,7 +9,6 @@ class MedicinePreview with _$MedicinePreview {
   const factory MedicinePreview({
     required int id,
     required String name,
-    required int quantity,
   }) = _MedicinePreview;
 
   factory MedicinePreview.fromJson(Map<String, Object?> json) =>

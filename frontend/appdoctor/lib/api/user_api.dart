@@ -29,7 +29,6 @@ class UserApi {
   static Future<Doctor?> getDoctorById(String id) async {
     Uri getDoctorUri =
         Uri.parse("${Constants.userAddress.toString()}doctor/$id");
-    print(getDoctorUri.toString());
     final response = await http.get(
       getDoctorUri,
       headers: <String, String>{
@@ -37,7 +36,6 @@ class UserApi {
       },
     );
     if (response.statusCode == 200) {
-      print(response.body);
       return Doctor.fromJson(jsonDecode(response.body));
     } else {
       return null;

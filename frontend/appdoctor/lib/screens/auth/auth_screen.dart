@@ -2,7 +2,7 @@ import 'package:appdoctor/api/user_api.dart';
 import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
 import 'package:appdoctor/screens/auth/login_form.dart';
 import 'package:appdoctor/screens/auth/registration_form.dart';
-import 'package:appdoctor/screens/welcome_screen.dart';
+import 'package:appdoctor/screens/welcome_doctor_screen.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,13 +23,8 @@ class _AuthScreenState extends State<AuthScreen> {
       String? userIdAndRole = await UserApi.login(userName, password);
       if (!mounted) return;
       if (userIdAndRole != null) {
-        // TODO beállítani az értékét a felhasználónak
-        print(userIdAndRole);
         final user = userIdAndRole.split('|<>|');
-        print(user[0]);
-        print(user[1]);
         if (user[1].toLowerCase() == "doktor") {
-          print("heereee");
           BlocProvider.of<DoctorBloc>(context).add(
             DoctorEvent.loginDoctor(
               doctorId: user[0],
@@ -38,7 +33,8 @@ class _AuthScreenState extends State<AuthScreen> {
         } else {}
 
         StatusBarControl.setHidden(false);
-        await Navigator.pushReplacementNamed(context, WelcomeScreen.routeName);
+        await Navigator.pushReplacementNamed(
+            context, WelcomeDoctorScreen.routeName);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: const Text("Hibás felhasználónév vagy jelszó!"),
@@ -46,7 +42,6 @@ class _AuthScreenState extends State<AuthScreen> {
         ));
       }
     } catch (err) {
-      print(err);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text("Hiba a bejelentkezés során."),
         backgroundColor: Colors.red.shade700,

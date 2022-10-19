@@ -1,6 +1,13 @@
+import 'package:appdoctor/bloc/disease/disease_bloc.dart';
 import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
+import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
 import 'package:appdoctor/screens/auth/auth_screen.dart';
-import 'package:appdoctor/screens/welcome_screen.dart';
+import 'package:appdoctor/screens/examination_reservation/examination_reservation_list.dart';
+import 'package:appdoctor/screens/medicine/add-medicine.dart';
+import 'package:appdoctor/screens/medicine/medicine_list.dart';
+import 'package:appdoctor/screens/receipt/create_receipt.dart';
+import 'package:appdoctor/screens/referral/create_referral.dart';
+import 'package:appdoctor/screens/welcome_doctor_screen.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +40,14 @@ class MyApp extends StatelessWidget {
           lazy: false,
           create: (BuildContext context) => DoctorBloc(),
         ),
+        BlocProvider<MedicineBloc>(
+          lazy: false,
+          create: (BuildContext context) => MedicineBloc(),
+        ),
+        BlocProvider<DiseaseBloc>(
+          lazy: false,
+          create: (BuildContext context) => DiseaseBloc(),
+        ),
       ],
       child: MaterialApp(
         title: 'AppDoctor',
@@ -60,7 +75,14 @@ class MyApp extends StatelessWidget {
           isRegistration: false,
         ),
         routes: {
-          WelcomeScreen.routeName: (context) => const WelcomeScreen(),
+          WelcomeDoctorScreen.routeName: (context) =>
+              const WelcomeDoctorScreen(),
+          ExaminationReservationList.routeName: (context) =>
+              const ExaminationReservationList(),
+          MedicineList.routeName: (context) => const MedicineList(),
+          CreateReceipt.routeName: (context) => const CreateReceipt(),
+          CreateReferral.routeName: (context) => const CreateReferral(),
+          AddMedicine.routeName: (context) => const AddMedicine(),
         },
       ),
     );

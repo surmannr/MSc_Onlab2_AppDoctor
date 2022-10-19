@@ -16,43 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DoctorEvent {
+  String get doctorId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getLoggedInDoctor,
     required TResult Function(String doctorId) loginDoctor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getLoggedInDoctor,
     TResult Function(String doctorId)? loginDoctor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getLoggedInDoctor,
     TResult Function(String doctorId)? loginDoctor,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetLoggedInDoctor value) getLoggedInDoctor,
     required TResult Function(_LoginDoctor value) loginDoctor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetLoggedInDoctor value)? getLoggedInDoctor,
     TResult Function(_LoginDoctor value)? loginDoctor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetLoggedInDoctor value)? getLoggedInDoctor,
     TResult Function(_LoginDoctor value)? loginDoctor,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DoctorEventCopyWith<DoctorEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +60,7 @@ abstract class $DoctorEventCopyWith<$Res> {
   factory $DoctorEventCopyWith(
           DoctorEvent value, $Res Function(DoctorEvent) then) =
       _$DoctorEventCopyWithImpl<$Res>;
+  $Res call({String doctorId});
 }
 
 /// @nodoc
@@ -70,118 +70,27 @@ class _$DoctorEventCopyWithImpl<$Res> implements $DoctorEventCopyWith<$Res> {
   final DoctorEvent _value;
   // ignore: unused_field
   final $Res Function(DoctorEvent) _then;
+
+  @override
+  $Res call({
+    Object? doctorId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      doctorId: doctorId == freezed
+          ? _value.doctorId
+          : doctorId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_GetLoggedInDoctorCopyWith<$Res> {
-  factory _$$_GetLoggedInDoctorCopyWith(_$_GetLoggedInDoctor value,
-          $Res Function(_$_GetLoggedInDoctor) then) =
-      __$$_GetLoggedInDoctorCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_GetLoggedInDoctorCopyWithImpl<$Res>
-    extends _$DoctorEventCopyWithImpl<$Res>
-    implements _$$_GetLoggedInDoctorCopyWith<$Res> {
-  __$$_GetLoggedInDoctorCopyWithImpl(
-      _$_GetLoggedInDoctor _value, $Res Function(_$_GetLoggedInDoctor) _then)
-      : super(_value, (v) => _then(v as _$_GetLoggedInDoctor));
-
-  @override
-  _$_GetLoggedInDoctor get _value => super._value as _$_GetLoggedInDoctor;
-}
-
-/// @nodoc
-
-class _$_GetLoggedInDoctor implements _GetLoggedInDoctor {
-  const _$_GetLoggedInDoctor();
-
-  @override
-  String toString() {
-    return 'DoctorEvent.getLoggedInDoctor()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetLoggedInDoctor);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getLoggedInDoctor,
-    required TResult Function(String doctorId) loginDoctor,
-  }) {
-    return getLoggedInDoctor();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getLoggedInDoctor,
-    TResult Function(String doctorId)? loginDoctor,
-  }) {
-    return getLoggedInDoctor?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getLoggedInDoctor,
-    TResult Function(String doctorId)? loginDoctor,
-    required TResult orElse(),
-  }) {
-    if (getLoggedInDoctor != null) {
-      return getLoggedInDoctor();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetLoggedInDoctor value) getLoggedInDoctor,
-    required TResult Function(_LoginDoctor value) loginDoctor,
-  }) {
-    return getLoggedInDoctor(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetLoggedInDoctor value)? getLoggedInDoctor,
-    TResult Function(_LoginDoctor value)? loginDoctor,
-  }) {
-    return getLoggedInDoctor?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetLoggedInDoctor value)? getLoggedInDoctor,
-    TResult Function(_LoginDoctor value)? loginDoctor,
-    required TResult orElse(),
-  }) {
-    if (getLoggedInDoctor != null) {
-      return getLoggedInDoctor(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetLoggedInDoctor implements DoctorEvent {
-  const factory _GetLoggedInDoctor() = _$_GetLoggedInDoctor;
-}
-
-/// @nodoc
-abstract class _$$_LoginDoctorCopyWith<$Res> {
+abstract class _$$_LoginDoctorCopyWith<$Res>
+    implements $DoctorEventCopyWith<$Res> {
   factory _$$_LoginDoctorCopyWith(
           _$_LoginDoctor value, $Res Function(_$_LoginDoctor) then) =
       __$$_LoginDoctorCopyWithImpl<$Res>;
+  @override
   $Res call({String doctorId});
 }
 
@@ -241,7 +150,6 @@ class _$_LoginDoctor implements _LoginDoctor {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getLoggedInDoctor,
     required TResult Function(String doctorId) loginDoctor,
   }) {
     return loginDoctor(doctorId);
@@ -250,7 +158,6 @@ class _$_LoginDoctor implements _LoginDoctor {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getLoggedInDoctor,
     TResult Function(String doctorId)? loginDoctor,
   }) {
     return loginDoctor?.call(doctorId);
@@ -259,7 +166,6 @@ class _$_LoginDoctor implements _LoginDoctor {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getLoggedInDoctor,
     TResult Function(String doctorId)? loginDoctor,
     required TResult orElse(),
   }) {
@@ -272,7 +178,6 @@ class _$_LoginDoctor implements _LoginDoctor {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetLoggedInDoctor value) getLoggedInDoctor,
     required TResult Function(_LoginDoctor value) loginDoctor,
   }) {
     return loginDoctor(this);
@@ -281,7 +186,6 @@ class _$_LoginDoctor implements _LoginDoctor {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetLoggedInDoctor value)? getLoggedInDoctor,
     TResult Function(_LoginDoctor value)? loginDoctor,
   }) {
     return loginDoctor?.call(this);
@@ -290,7 +194,6 @@ class _$_LoginDoctor implements _LoginDoctor {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetLoggedInDoctor value)? getLoggedInDoctor,
     TResult Function(_LoginDoctor value)? loginDoctor,
     required TResult orElse(),
   }) {
@@ -304,17 +207,33 @@ class _$_LoginDoctor implements _LoginDoctor {
 abstract class _LoginDoctor implements DoctorEvent {
   const factory _LoginDoctor({required final String doctorId}) = _$_LoginDoctor;
 
+  @override
   String get doctorId;
+  @override
   @JsonKey(ignore: true)
   _$$_LoginDoctorCopyWith<_$_LoginDoctor> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+DoctorState _$DoctorStateFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'loading':
+      return _Loading.fromJson(json);
+    case 'loaded':
+      return _Loaded.fromJson(json);
+    case 'error':
+      return _Error.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'DoctorState',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$DoctorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Doctor doctor) loaded,
     required TResult Function(String message) error,
@@ -322,7 +241,6 @@ mixin _$DoctorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -330,7 +248,6 @@ mixin _$DoctorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -339,7 +256,6 @@ mixin _$DoctorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -347,7 +263,6 @@ mixin _$DoctorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -355,13 +270,13 @@ mixin _$DoctorState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -378,121 +293,6 @@ class _$DoctorStateCopyWithImpl<$Res> implements $DoctorStateCopyWith<$Res> {
   final DoctorState _value;
   // ignore: unused_field
   final $Res Function(DoctorState) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'DoctorState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Doctor doctor) loaded,
-    required TResult Function(String message) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
-    TResult Function(String message)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements DoctorState {
-  const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
@@ -513,9 +313,15 @@ class __$$_LoadingCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Loading implements _Loading {
-  const _$_Loading();
+  const _$_Loading({final String? $type}) : $type = $type ?? 'loading';
+
+  factory _$_Loading.fromJson(Map<String, dynamic> json) =>
+      _$$_LoadingFromJson(json);
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -528,13 +334,13 @@ class _$_Loading implements _Loading {
         (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Doctor doctor) loaded,
     required TResult Function(String message) error,
@@ -545,7 +351,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -556,7 +361,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -571,7 +375,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -582,7 +385,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -593,7 +395,6 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -604,10 +405,19 @@ class _$_Loading implements _Loading {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LoadingToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Loading implements DoctorState {
   const factory _Loading() = _$_Loading;
+
+  factory _Loading.fromJson(Map<String, dynamic> json) = _$_Loading.fromJson;
 }
 
 /// @nodoc
@@ -649,12 +459,19 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.doctor);
+  const _$_Loaded(this.doctor, {final String? $type})
+      : $type = $type ?? 'loaded';
+
+  factory _$_Loaded.fromJson(Map<String, dynamic> json) =>
+      _$$_LoadedFromJson(json);
 
   @override
   final Doctor doctor;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -669,6 +486,7 @@ class _$_Loaded implements _Loaded {
             const DeepCollectionEquality().equals(other.doctor, doctor));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(doctor));
@@ -681,7 +499,6 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Doctor doctor) loaded,
     required TResult Function(String message) error,
@@ -692,7 +509,6 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -703,7 +519,6 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -718,7 +533,6 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -729,7 +543,6 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -740,7 +553,6 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -751,10 +563,19 @@ class _$_Loaded implements _Loaded {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LoadedToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Loaded implements DoctorState {
   const factory _Loaded(final Doctor doctor) = _$_Loaded;
+
+  factory _Loaded.fromJson(Map<String, dynamic> json) = _$_Loaded.fromJson;
 
   Doctor get doctor;
   @JsonKey(ignore: true)
@@ -792,12 +613,19 @@ class __$$_ErrorCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Error implements _Error {
-  const _$_Error(this.message);
+  const _$_Error(this.message, {final String? $type})
+      : $type = $type ?? 'error';
+
+  factory _$_Error.fromJson(Map<String, dynamic> json) =>
+      _$$_ErrorFromJson(json);
 
   @override
   final String message;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -812,6 +640,7 @@ class _$_Error implements _Error {
             const DeepCollectionEquality().equals(other.message, message));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
@@ -824,7 +653,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Doctor doctor) loaded,
     required TResult Function(String message) error,
@@ -835,7 +663,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -846,7 +673,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Doctor doctor)? loaded,
     TResult Function(String message)? error,
@@ -861,7 +687,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
@@ -872,7 +697,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -883,7 +707,6 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
@@ -894,10 +717,19 @@ class _$_Error implements _Error {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ErrorToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Error implements DoctorState {
   const factory _Error(final String message) = _$_Error;
+
+  factory _Error.fromJson(Map<String, dynamic> json) = _$_Error.fromJson;
 
   String get message;
   @JsonKey(ignore: true)
