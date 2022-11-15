@@ -1,26 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'receipt.dart';
+part of 'new_receipt.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Receipt _$$_ReceiptFromJson(Map<String, dynamic> json) => _$_Receipt(
-      id: json['id'] as String,
+_$_NewReceipt _$$_NewReceiptFromJson(Map<String, dynamic> json) =>
+    _$_NewReceipt(
       date: DateTime.parse(json['date'] as String),
-      patientFullName: json['patientFullName'] as String,
-      doctorFullName: json['doctorFullName'] as String,
+      patientId: json['patientId'] as String,
+      doctorId: json['doctorId'] as String,
       medicines: (json['medicines'] as List<dynamic>)
           .map((e) => MedicineReceipt.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_ReceiptToJson(_$_Receipt instance) =>
+Map<String, dynamic> _$$_NewReceiptToJson(_$_NewReceipt instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'date': instance.date.toIso8601String(),
-      'patientFullName': instance.patientFullName,
-      'doctorFullName': instance.doctorFullName,
+      'patientId': instance.patientId,
+      'doctorId': instance.doctorId,
       'medicines': instance.medicines,
     };

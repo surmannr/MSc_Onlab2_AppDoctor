@@ -1,5 +1,7 @@
 import 'package:appdoctor/bloc/disease/disease_bloc.dart';
 import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
+import 'package:appdoctor/bloc/doctor_receipt/doctor_receipt_bloc.dart';
+import 'package:appdoctor/bloc/doctor_referral/doctor_referral_bloc.dart';
 import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
 import 'package:appdoctor/screens/auth/auth_screen.dart';
 import 'package:appdoctor/screens/examination_reservation/examination_reservation_list.dart';
@@ -47,6 +49,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<DiseaseBloc>(
           lazy: false,
           create: (BuildContext context) => DiseaseBloc(),
+        ),
+        BlocProvider<DoctorReceiptBloc>(
+          lazy: false,
+          create: (BuildContext context) => DoctorReceiptBloc(),
+        ),
+        BlocProvider<DoctorReferralBloc>(
+          lazy: false,
+          create: (BuildContext context) => DoctorReferralBloc(),
         ),
       ],
       child: MaterialApp(

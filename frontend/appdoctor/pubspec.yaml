@@ -45,6 +45,10 @@ dependencies:
   hydrated_bloc: ^8.1.0
   path_provider: ^2.0.11
   multi_select_flutter: ^4.1.2
+  dropdown_plus: ^0.0.9
+  intl: ^0.17.0
+  shared_preferences: ^0.5.5
+  flutter_cupertino_datetime_picker: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +93,9 @@ flutter:
       fonts:
         - asset: assets/fonts/coolvetica rg it.otf
         - asset: assets/fonts/coolvetica rg.otf
+    - family: "Amertha"
+      fonts:
+        - asset: assets/fonts/Amertha_PERSONAL_USE_ONLY.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

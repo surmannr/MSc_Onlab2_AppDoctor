@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'constants.dart';
 
 class MedicineApi {
-  static Future<List<MedicinePreview>?> getMedicines() async {
+  static Future<List<MedicinePreview>> getMedicines() async {
     Uri getDoctorUri = Uri.parse(Constants.medicineAddress.toString());
     final response = await http.get(
       getDoctorUri,
@@ -21,7 +21,7 @@ class MedicineApi {
         return MedicinePreview.fromJson(json);
       }).toList();
     } else {
-      return null;
+      return [];
     }
   }
 
@@ -50,13 +50,7 @@ class MedicineApi {
     int inStock,
   ) async {
     Uri uri = Uri.parse("${Constants.medicineAddress.toString()}new");
-    final data = jsonEncode(
-      <String, dynamic>{
-        'name': name,
-        'inStock': inStock,
-        'diseasesGoodFor': diseases,
-      },
-    );
+
     final response = await http.post(
       uri,
       headers: <String, String>{

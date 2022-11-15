@@ -1,6 +1,7 @@
 import 'package:appdoctor/bloc/disease/disease_bloc.dart';
 import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/screens/_common_widgets/top_image_widget.dart';
 import 'package:appdoctor/screens/medicine/medicine_list.dart';
 import 'package:appdoctor/styles/widget_styles.dart';
 import 'package:flutter/material.dart';
@@ -64,31 +65,9 @@ class _AddMedicineState extends State<AddMedicine> {
                 child: Center(
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: const BoxDecoration(
-                            color: AppDoctorStyles.cardColor,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: AspectRatio(
-                              aspectRatio: 1.1,
-                              child: Image.asset(
-                                'assets/images/medicine.png',
-                                width: double.infinity,
-                                fit: BoxFit.fitHeight,
-                                color: AppDoctorStyles.cardColor,
-                                colorBlendMode: BlendMode.color,
-                              ),
-                            ),
-                          ),
-                        ),
+                      const TopImageWidget(
+                        imagePath: 'assets/images/medicine.png',
+                        blendMode: BlendMode.color,
                       ),
                       const Text(
                         "Új gyógyszer hozzáadása",

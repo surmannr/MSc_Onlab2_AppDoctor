@@ -24,7 +24,7 @@ mixin _$Receipt {
   DateTime get date => throw _privateConstructorUsedError;
   String get patientFullName => throw _privateConstructorUsedError;
   String get doctorFullName => throw _privateConstructorUsedError;
-  List<MedicinePreview> get medicines => throw _privateConstructorUsedError;
+  List<MedicineReceipt> get medicines => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $ReceiptCopyWith<$Res> {
       DateTime date,
       String patientFullName,
       String doctorFullName,
-      List<MedicinePreview> medicines});
+      List<MedicineReceipt> medicines});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$ReceiptCopyWithImpl<$Res> implements $ReceiptCopyWith<$Res> {
       medicines: medicines == freezed
           ? _value.medicines
           : medicines // ignore: cast_nullable_to_non_nullable
-              as List<MedicinePreview>,
+              as List<MedicineReceipt>,
     ));
   }
 }
@@ -95,7 +95,7 @@ abstract class _$$_ReceiptCopyWith<$Res> implements $ReceiptCopyWith<$Res> {
       DateTime date,
       String patientFullName,
       String doctorFullName,
-      List<MedicinePreview> medicines});
+      List<MedicineReceipt> medicines});
 }
 
 /// @nodoc
@@ -135,7 +135,7 @@ class __$$_ReceiptCopyWithImpl<$Res> extends _$ReceiptCopyWithImpl<$Res>
       medicines: medicines == freezed
           ? _value._medicines
           : medicines // ignore: cast_nullable_to_non_nullable
-              as List<MedicinePreview>,
+              as List<MedicineReceipt>,
     ));
   }
 }
@@ -148,7 +148,7 @@ class _$_Receipt with DiagnosticableTreeMixin implements _Receipt {
       required this.date,
       required this.patientFullName,
       required this.doctorFullName,
-      required final List<MedicinePreview> medicines})
+      required final List<MedicineReceipt> medicines})
       : _medicines = medicines;
 
   factory _$_Receipt.fromJson(Map<String, dynamic> json) =>
@@ -162,9 +162,9 @@ class _$_Receipt with DiagnosticableTreeMixin implements _Receipt {
   final String patientFullName;
   @override
   final String doctorFullName;
-  final List<MedicinePreview> _medicines;
+  final List<MedicineReceipt> _medicines;
   @override
-  List<MedicinePreview> get medicines {
+  List<MedicineReceipt> get medicines {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_medicines);
   }
@@ -230,7 +230,7 @@ abstract class _Receipt implements Receipt {
       required final DateTime date,
       required final String patientFullName,
       required final String doctorFullName,
-      required final List<MedicinePreview> medicines}) = _$_Receipt;
+      required final List<MedicineReceipt> medicines}) = _$_Receipt;
 
   factory _Receipt.fromJson(Map<String, dynamic> json) = _$_Receipt.fromJson;
 
@@ -243,7 +243,7 @@ abstract class _Receipt implements Receipt {
   @override
   String get doctorFullName;
   @override
-  List<MedicinePreview> get medicines;
+  List<MedicineReceipt> get medicines;
   @override
   @JsonKey(ignore: true)
   _$$_ReceiptCopyWith<_$_Receipt> get copyWith =>

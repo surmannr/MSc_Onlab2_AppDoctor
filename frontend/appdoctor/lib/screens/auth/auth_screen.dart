@@ -6,6 +6,7 @@ import 'package:appdoctor/screens/welcome_doctor_screen.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:status_bar_control/status_bar_control.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -30,6 +31,8 @@ class _AuthScreenState extends State<AuthScreen> {
               doctorId: user[0],
             ),
           );
+          var prefs = await SharedPreferences.getInstance();
+          prefs.setString("doctorId", user[0]);
         } else {}
 
         StatusBarControl.setHidden(false);

@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:appdoctor/api/constants.dart';
 import 'package:appdoctor/models/users/doctor.dart';
+import 'package:appdoctor/models/users/patient.dart';
+import 'package:appdoctor/models/users/patient_preview.dart';
 import 'package:http/http.dart' as http;
 
 class UserApi {
@@ -39,6 +41,25 @@ class UserApi {
       return Doctor.fromJson(jsonDecode(response.body));
     } else {
       return null;
+    }
+  }
+
+  static Future<List<PatientPreview>> getPatients() async {
+    Uri getPatientsUri =
+        Uri.parse("${Constants.userAddress.toString()}patients");
+    final response = await http.get(
+      getPatientsUri,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+    );
+    if (response.statusCode == 200) {
+      var list = (jsonDecode(response.body)) as List;
+      var patients = List<PatientPreview>.from(
+          list.map<PatientPreview>((dynamic i) => PatientPreview.fromJson(i)));
+      return patients;
+    } else {
+      return [];
     }
   }
 }
