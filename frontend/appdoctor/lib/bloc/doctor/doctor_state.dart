@@ -5,7 +5,4 @@ class DoctorState with _$DoctorState {
   const factory DoctorState.loading() = _Loading;
   const factory DoctorState.loaded(Doctor doctor) = _Loaded;
   const factory DoctorState.error(String message) = _Error;
-
-  factory DoctorState.fromJson(Map<String, Object?> json) =>
-      _$DoctorStateFromJson(json);
 }

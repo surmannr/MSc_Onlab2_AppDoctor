@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'doctor_bloc.dart';
+part of 'doctors_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,162 +15,116 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$DoctorEvent {
-  String get doctorId => throw _privateConstructorUsedError;
+mixin _$DoctorsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String doctorId) loginDoctor,
+    required TResult Function() load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String doctorId)? loginDoctor,
+    TResult Function()? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String doctorId)? loginDoctor,
+    TResult Function()? load,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginDoctor value) loginDoctor,
+    required TResult Function(_Load value) load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LoginDoctor value)? loginDoctor,
+    TResult Function(_Load value)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoginDoctor value)? loginDoctor,
+    TResult Function(_Load value)? load,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $DoctorEventCopyWith<DoctorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DoctorEventCopyWith<$Res> {
-  factory $DoctorEventCopyWith(
-          DoctorEvent value, $Res Function(DoctorEvent) then) =
-      _$DoctorEventCopyWithImpl<$Res>;
-  $Res call({String doctorId});
+abstract class $DoctorsEventCopyWith<$Res> {
+  factory $DoctorsEventCopyWith(
+          DoctorsEvent value, $Res Function(DoctorsEvent) then) =
+      _$DoctorsEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DoctorEventCopyWithImpl<$Res> implements $DoctorEventCopyWith<$Res> {
-  _$DoctorEventCopyWithImpl(this._value, this._then);
+class _$DoctorsEventCopyWithImpl<$Res> implements $DoctorsEventCopyWith<$Res> {
+  _$DoctorsEventCopyWithImpl(this._value, this._then);
 
-  final DoctorEvent _value;
+  final DoctorsEvent _value;
   // ignore: unused_field
-  final $Res Function(DoctorEvent) _then;
-
-  @override
-  $Res call({
-    Object? doctorId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      doctorId: doctorId == freezed
-          ? _value.doctorId
-          : doctorId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  final $Res Function(DoctorsEvent) _then;
 }
 
 /// @nodoc
-abstract class _$$_LoginDoctorCopyWith<$Res>
-    implements $DoctorEventCopyWith<$Res> {
-  factory _$$_LoginDoctorCopyWith(
-          _$_LoginDoctor value, $Res Function(_$_LoginDoctor) then) =
-      __$$_LoginDoctorCopyWithImpl<$Res>;
-  @override
-  $Res call({String doctorId});
+abstract class _$$_LoadCopyWith<$Res> {
+  factory _$$_LoadCopyWith(_$_Load value, $Res Function(_$_Load) then) =
+      __$$_LoadCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoginDoctorCopyWithImpl<$Res> extends _$DoctorEventCopyWithImpl<$Res>
-    implements _$$_LoginDoctorCopyWith<$Res> {
-  __$$_LoginDoctorCopyWithImpl(
-      _$_LoginDoctor _value, $Res Function(_$_LoginDoctor) _then)
-      : super(_value, (v) => _then(v as _$_LoginDoctor));
+class __$$_LoadCopyWithImpl<$Res> extends _$DoctorsEventCopyWithImpl<$Res>
+    implements _$$_LoadCopyWith<$Res> {
+  __$$_LoadCopyWithImpl(_$_Load _value, $Res Function(_$_Load) _then)
+      : super(_value, (v) => _then(v as _$_Load));
 
   @override
-  _$_LoginDoctor get _value => super._value as _$_LoginDoctor;
-
-  @override
-  $Res call({
-    Object? doctorId = freezed,
-  }) {
-    return _then(_$_LoginDoctor(
-      doctorId: doctorId == freezed
-          ? _value.doctorId
-          : doctorId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+  _$_Load get _value => super._value as _$_Load;
 }
 
 /// @nodoc
 
-class _$_LoginDoctor implements _LoginDoctor {
-  const _$_LoginDoctor({required this.doctorId});
-
-  @override
-  final String doctorId;
+class _$_Load implements _Load {
+  const _$_Load();
 
   @override
   String toString() {
-    return 'DoctorEvent.loginDoctor(doctorId: $doctorId)';
+    return 'DoctorsEvent.load()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LoginDoctor &&
-            const DeepCollectionEquality().equals(other.doctorId, doctorId));
+        (other.runtimeType == runtimeType && other is _$_Load);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(doctorId));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_LoginDoctorCopyWith<_$_LoginDoctor> get copyWith =>
-      __$$_LoginDoctorCopyWithImpl<_$_LoginDoctor>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String doctorId) loginDoctor,
+    required TResult Function() load,
   }) {
-    return loginDoctor(doctorId);
+    return load();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String doctorId)? loginDoctor,
+    TResult Function()? load,
   }) {
-    return loginDoctor?.call(doctorId);
+    return load?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String doctorId)? loginDoctor,
+    TResult Function()? load,
     required TResult orElse(),
   }) {
-    if (loginDoctor != null) {
-      return loginDoctor(doctorId);
+    if (load != null) {
+      return load();
     }
     return orElse();
   }
@@ -178,63 +132,56 @@ class _$_LoginDoctor implements _LoginDoctor {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoginDoctor value) loginDoctor,
+    required TResult Function(_Load value) load,
   }) {
-    return loginDoctor(this);
+    return load(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LoginDoctor value)? loginDoctor,
+    TResult Function(_Load value)? load,
   }) {
-    return loginDoctor?.call(this);
+    return load?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoginDoctor value)? loginDoctor,
+    TResult Function(_Load value)? load,
     required TResult orElse(),
   }) {
-    if (loginDoctor != null) {
-      return loginDoctor(this);
+    if (load != null) {
+      return load(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoginDoctor implements DoctorEvent {
-  const factory _LoginDoctor({required final String doctorId}) = _$_LoginDoctor;
-
-  @override
-  String get doctorId;
-  @override
-  @JsonKey(ignore: true)
-  _$$_LoginDoctorCopyWith<_$_LoginDoctor> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Load implements DoctorsEvent {
+  const factory _Load() = _$_Load;
 }
 
 /// @nodoc
-mixin _$DoctorState {
+mixin _$DoctorsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Doctor doctor) loaded,
+    required TResult Function(List<DoctorPreview> doctors) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -264,19 +211,19 @@ mixin _$DoctorState {
 }
 
 /// @nodoc
-abstract class $DoctorStateCopyWith<$Res> {
-  factory $DoctorStateCopyWith(
-          DoctorState value, $Res Function(DoctorState) then) =
-      _$DoctorStateCopyWithImpl<$Res>;
+abstract class $DoctorsStateCopyWith<$Res> {
+  factory $DoctorsStateCopyWith(
+          DoctorsState value, $Res Function(DoctorsState) then) =
+      _$DoctorsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DoctorStateCopyWithImpl<$Res> implements $DoctorStateCopyWith<$Res> {
-  _$DoctorStateCopyWithImpl(this._value, this._then);
+class _$DoctorsStateCopyWithImpl<$Res> implements $DoctorsStateCopyWith<$Res> {
+  _$DoctorsStateCopyWithImpl(this._value, this._then);
 
-  final DoctorState _value;
+  final DoctorsState _value;
   // ignore: unused_field
-  final $Res Function(DoctorState) _then;
+  final $Res Function(DoctorsState) _then;
 }
 
 /// @nodoc
@@ -287,7 +234,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res> extends _$DoctorsStateCopyWithImpl<$Res>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, (v) => _then(v as _$_Loading));
@@ -303,7 +250,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'DoctorState.loading()';
+    return 'DoctorsState.loading()';
   }
 
   @override
@@ -319,7 +266,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Doctor doctor) loaded,
+    required TResult Function(List<DoctorPreview> doctors) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -329,7 +276,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
   }) {
     return loading?.call();
@@ -339,7 +286,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -384,7 +331,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements DoctorState {
+abstract class _Loading implements DoctorsState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -392,13 +339,11 @@ abstract class _Loading implements DoctorState {
 abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
-  $Res call({Doctor doctor});
-
-  $DoctorCopyWith<$Res> get doctor;
+  $Res call({List<DoctorPreview> doctors});
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
+class __$$_LoadedCopyWithImpl<$Res> extends _$DoctorsStateCopyWithImpl<$Res>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
       : super(_value, (v) => _then(v as _$_Loaded));
@@ -408,35 +353,32 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? doctor = freezed,
+    Object? doctors = freezed,
   }) {
     return _then(_$_Loaded(
-      doctor == freezed
-          ? _value.doctor
-          : doctor // ignore: cast_nullable_to_non_nullable
-              as Doctor,
+      doctors == freezed
+          ? _value._doctors
+          : doctors // ignore: cast_nullable_to_non_nullable
+              as List<DoctorPreview>,
     ));
-  }
-
-  @override
-  $DoctorCopyWith<$Res> get doctor {
-    return $DoctorCopyWith<$Res>(_value.doctor, (value) {
-      return _then(_value.copyWith(doctor: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.doctor);
+  const _$_Loaded(final List<DoctorPreview> doctors) : _doctors = doctors;
 
+  final List<DoctorPreview> _doctors;
   @override
-  final Doctor doctor;
+  List<DoctorPreview> get doctors {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_doctors);
+  }
 
   @override
   String toString() {
-    return 'DoctorState.loaded(doctor: $doctor)';
+    return 'DoctorsState.loaded(doctors: $doctors)';
   }
 
   @override
@@ -444,12 +386,12 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            const DeepCollectionEquality().equals(other.doctor, doctor));
+            const DeepCollectionEquality().equals(other._doctors, _doctors));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(doctor));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_doctors));
 
   @JsonKey(ignore: true)
   @override
@@ -460,32 +402,32 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Doctor doctor) loaded,
+    required TResult Function(List<DoctorPreview> doctors) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(doctor);
+    return loaded(doctors);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
   }) {
-    return loaded?.call(doctor);
+    return loaded?.call(doctors);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(doctor);
+      return loaded(doctors);
     }
     return orElse();
   }
@@ -525,10 +467,10 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements DoctorState {
-  const factory _Loaded(final Doctor doctor) = _$_Loaded;
+abstract class _Loaded implements DoctorsState {
+  const factory _Loaded(final List<DoctorPreview> doctors) = _$_Loaded;
 
-  Doctor get doctor;
+  List<DoctorPreview> get doctors;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -542,7 +484,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$DoctorStateCopyWithImpl<$Res>
+class __$$_ErrorCopyWithImpl<$Res> extends _$DoctorsStateCopyWithImpl<$Res>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, (v) => _then(v as _$_Error));
@@ -573,7 +515,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'DoctorState.error(message: $message)';
+    return 'DoctorsState.error(message: $message)';
   }
 
   @override
@@ -597,7 +539,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Doctor doctor) loaded,
+    required TResult Function(List<DoctorPreview> doctors) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -607,7 +549,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
   }) {
     return error?.call(message);
@@ -617,7 +559,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Doctor doctor)? loaded,
+    TResult Function(List<DoctorPreview> doctors)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -662,7 +604,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements DoctorState {
+abstract class _Error implements DoctorsState {
   const factory _Error(final String message) = _$_Error;
 
   String get message;

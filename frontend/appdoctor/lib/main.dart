@@ -3,14 +3,21 @@ import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
 import 'package:appdoctor/bloc/doctor_examination_reservation/doctor_examination_reservation_bloc.dart';
 import 'package:appdoctor/bloc/doctor_receipt/doctor_receipt_bloc.dart';
 import 'package:appdoctor/bloc/doctor_referral/doctor_referral_bloc.dart';
+import 'package:appdoctor/bloc/doctors/doctors_bloc.dart';
 import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
+import 'package:appdoctor/bloc/patient/patient_bloc.dart';
 import 'package:appdoctor/screens/auth/auth_screen.dart';
+import 'package:appdoctor/screens/examination_reservation/create_examination_reservation.dart';
 import 'package:appdoctor/screens/examination_reservation/examination_reservation_list.dart';
 import 'package:appdoctor/screens/medicine/add-medicine.dart';
 import 'package:appdoctor/screens/medicine/medicine_list.dart';
 import 'package:appdoctor/screens/receipt/create_receipt.dart';
+import 'package:appdoctor/screens/receipt/patient_receipt_list.dart';
 import 'package:appdoctor/screens/referral/create_referral.dart';
+import 'package:appdoctor/screens/referral/patient_referral_list.dart';
+import 'package:appdoctor/screens/users/doctors_list.dart';
 import 'package:appdoctor/screens/welcome_doctor_screen.dart';
+import 'package:appdoctor/screens/welcome_patient_screen.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +50,10 @@ class MyApp extends StatelessWidget {
           lazy: false,
           create: (BuildContext context) => DoctorBloc(),
         ),
+        BlocProvider<PatientBloc>(
+          lazy: false,
+          create: (BuildContext context) => PatientBloc(),
+        ),
         BlocProvider<MedicineBloc>(
           lazy: false,
           create: (BuildContext context) => MedicineBloc(),
@@ -62,6 +73,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<DoctorExaminationReservationBloc>(
           lazy: false,
           create: (BuildContext context) => DoctorExaminationReservationBloc(),
+        ),
+        BlocProvider<DoctorsBloc>(
+          lazy: false,
+          create: (BuildContext context) => DoctorsBloc(),
         ),
       ],
       child: MaterialApp(
@@ -92,12 +107,20 @@ class MyApp extends StatelessWidget {
         routes: {
           WelcomeDoctorScreen.routeName: (context) =>
               const WelcomeDoctorScreen(),
+          WelcomePatientScreen.routeName: (context) =>
+              const WelcomePatientScreen(),
           ExaminationReservationList.routeName: (context) =>
               const ExaminationReservationList(),
           MedicineList.routeName: (context) => const MedicineList(),
           CreateReceipt.routeName: (context) => const CreateReceipt(),
           CreateReferral.routeName: (context) => const CreateReferral(),
           AddMedicine.routeName: (context) => const AddMedicine(),
+          CreateExaminationReservation.routeName: (context) =>
+              const CreateExaminationReservation(),
+          PatientReceiptList.routeName: (context) => const PatientReceiptList(),
+          PatientReferralList.routeName: (context) =>
+              const PatientReferralList(),
+          DoctorsListScreen.routeName: (context) => const DoctorsListScreen(),
         },
       ),
     );

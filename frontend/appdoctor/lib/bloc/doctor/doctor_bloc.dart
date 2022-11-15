@@ -1,15 +1,14 @@
 import 'package:appdoctor/api/user_api.dart';
 import 'package:appdoctor/models/users/doctor.dart';
+import 'package:appdoctor/models/users/doctor_preview.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'doctor_event.dart';
 part 'doctor_state.dart';
 part 'doctor_bloc.freezed.dart';
-part 'doctor_bloc.g.dart';
 
-class DoctorBloc extends HydratedBloc<DoctorEvent, DoctorState> {
+class DoctorBloc extends Bloc<DoctorEvent, DoctorState> {
   DoctorBloc() : super(const _Loading()) {
     on<_LoginDoctor>(
       (event, emit) async {
@@ -21,19 +20,5 @@ class DoctorBloc extends HydratedBloc<DoctorEvent, DoctorState> {
         }
       },
     );
-  }
-
-  @override
-  DoctorState? fromJson(Map<String, dynamic> json) {
-    return DoctorState.fromJson(json);
-  }
-
-  @override
-  Map<String, dynamic>? toJson(DoctorState state) {
-    try {
-      return state.toJson();
-    } catch (_) {
-      return null;
-    }
   }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:appdoctor/api/constants.dart';
 import 'package:appdoctor/models/users/doctor.dart';
+import 'package:appdoctor/models/users/doctor_preview.dart';
 import 'package:appdoctor/models/users/patient.dart';
 import 'package:appdoctor/models/users/patient_preview.dart';
 import 'package:http/http.dart' as http;
@@ -44,6 +45,22 @@ class UserApi {
     }
   }
 
+  static Future<Patient?> getPatientById(String id) async {
+    Uri getPatientUri =
+        Uri.parse("${Constants.userAddress.toString()}patient/$id");
+    final response = await http.get(
+      getPatientUri,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+    );
+    if (response.statusCode == 200) {
+      return Patient.fromJson(jsonDecode(response.body));
+    } else {
+      return null;
+    }
+  }
+
   static Future<List<PatientPreview>> getPatients() async {
     Uri getPatientsUri =
         Uri.parse("${Constants.userAddress.toString()}patients");
@@ -57,6 +74,24 @@ class UserApi {
       var list = (jsonDecode(response.body)) as List;
       var patients = List<PatientPreview>.from(
           list.map<PatientPreview>((dynamic i) => PatientPreview.fromJson(i)));
+      return patients;
+    } else {
+      return [];
+    }
+  }
+
+  static Future<List<DoctorPreview>> getDoctors() async {
+    Uri getDoctorsUri = Uri.parse("${Constants.userAddress.toString()}doctors");
+    final response = await http.get(
+      getDoctorsUri,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+    );
+    if (response.statusCode == 200) {
+      var list = (jsonDecode(response.body)) as List;
+      var patients = List<DoctorPreview>.from(
+          list.map<DoctorPreview>((dynamic i) => DoctorPreview.fromJson(i)));
       return patients;
     } else {
       return [];

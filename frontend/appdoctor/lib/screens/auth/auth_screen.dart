@@ -1,8 +1,10 @@
 import 'package:appdoctor/api/user_api.dart';
 import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
+import 'package:appdoctor/bloc/patient/patient_bloc.dart';
 import 'package:appdoctor/screens/auth/login_form.dart';
 import 'package:appdoctor/screens/auth/registration_form.dart';
 import 'package:appdoctor/screens/welcome_doctor_screen.dart';
+import 'package:appdoctor/screens/welcome_patient_screen.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,11 +35,25 @@ class _AuthScreenState extends State<AuthScreen> {
           );
           var prefs = await SharedPreferences.getInstance();
           prefs.setString("doctorId", user[0]);
-        } else {}
 
-        StatusBarControl.setHidden(false);
-        await Navigator.pushReplacementNamed(
-            context, WelcomeDoctorScreen.routeName);
+          StatusBarControl.setHidden(false);
+          // ignore: use_build_context_synchronously
+          await Navigator.pushReplacementNamed(
+              context, WelcomeDoctorScreen.routeName);
+        } else {
+          BlocProvider.of<PatientBloc>(context).add(
+            PatientEvent.loginPatient(
+              patientId: user[0],
+            ),
+          );
+          var prefs = await SharedPreferences.getInstance();
+          prefs.setString("patientId", user[0]);
+
+          StatusBarControl.setHidden(false);
+          // ignore: use_build_context_synchronously
+          await Navigator.pushReplacementNamed(
+              context, WelcomePatientScreen.routeName);
+        }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: const Text("Hibás felhasználónév vagy jelszó!"),
