@@ -1,5 +1,6 @@
 import 'package:appdoctor/bloc/disease/disease_bloc.dart';
 import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
+import 'package:appdoctor/bloc/doctor_examination_reservation/doctor_examination_reservation_bloc.dart';
 import 'package:appdoctor/bloc/doctor_receipt/doctor_receipt_bloc.dart';
 import 'package:appdoctor/bloc/doctor_referral/doctor_referral_bloc.dart';
 import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
@@ -57,6 +58,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<DoctorReferralBloc>(
           lazy: false,
           create: (BuildContext context) => DoctorReferralBloc(),
+        ),
+        BlocProvider<DoctorExaminationReservationBloc>(
+          lazy: false,
+          create: (BuildContext context) => DoctorExaminationReservationBloc(),
         ),
       ],
       child: MaterialApp(

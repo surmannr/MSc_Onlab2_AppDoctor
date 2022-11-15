@@ -49,6 +49,7 @@ dependencies:
   intl: ^0.17.0
   shared_preferences: ^0.5.5
   flutter_cupertino_datetime_picker: ^3.0.0
+  flutter_slidable: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -53,5 +53,29 @@ namespace AppDoctorBackend.Web.Controllers
             };
             return await mediator.Send(query);
         }
+
+        [HttpPost]
+        [Route("accept/{id}")]
+        public async Task<bool> AcceptExaminationReservation(string id, [FromQuery] bool acceptExaminationReservation)
+        {
+            var query = new AcceptExaminationReservationCommand.Command()
+            {
+                isAccepted = acceptExaminationReservation,
+                ExaminationReservationId = Guid.Parse(id),
+            };
+            return await mediator.Send(query);
+        }
+
+        [HttpPost]
+        [Route("resolve/{id}")]
+        public async Task<bool> ResolveExaminationReservation(string id, [FromQuery] bool resolveExaminationReservation)
+        {
+            var query = new ResolveExaminationReservationCommand.Command()
+            {
+                IsResolved = resolveExaminationReservation,
+                ExaminationReservationId = Guid.Parse(id),
+            };
+            return await mediator.Send(query);
+        }
     }
 }
