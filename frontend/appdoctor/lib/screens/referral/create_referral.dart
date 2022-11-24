@@ -136,10 +136,8 @@ class _CreateReferralState extends State<CreateReferral> {
                               title: Text("${item['patientFullName']}"),
                               subtitle: Text(
                                 DateFormat('yyyy-MM-dd')
-                                        .format(
-                                            DateTime.parse(item['dateFrom']))
-                                        .toString() ??
-                                    '',
+                                    .format(DateTime.parse(item['dateFrom']))
+                                    .toString(),
                               ),
                               tileColor: focused
                                   ? const Color.fromARGB(20, 0, 0, 0)

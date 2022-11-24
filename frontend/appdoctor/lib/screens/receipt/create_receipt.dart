@@ -85,8 +85,8 @@ class _CreateReceiptState extends State<CreateReceipt> {
                 child: Column(
                   children: [
                     const TopImageWidget(
-                      imagePath: "assets/images/receipt.png",
-                      blendMode: BlendMode.modulate,
+                      imagePath: "assets/images/receipt2.png",
+                      blendMode: BlendMode.color,
                     ),
                     const Text(
                       "Új recept felírása",
@@ -165,10 +165,9 @@ class _CreateReceiptState extends State<CreateReceipt> {
                                               "${item['lastName']} ${item['firstName']}"),
                                       subtitle: Text(
                                         DateFormat('yyyy-MM-dd')
-                                                .format(DateTime.parse(
-                                                    item['birthDate']))
-                                                .toString() ??
-                                            '',
+                                            .format(DateTime.parse(
+                                                item['birthDate']))
+                                            .toString(),
                                       ),
                                       tileColor: focused
                                           ? const Color.fromARGB(20, 0, 0, 0)

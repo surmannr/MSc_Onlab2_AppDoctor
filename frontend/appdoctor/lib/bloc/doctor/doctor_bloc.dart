@@ -1,6 +1,5 @@
 import 'package:appdoctor/api/user_api.dart';
 import 'package:appdoctor/models/users/doctor.dart';
-import 'package:appdoctor/models/users/doctor_preview.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

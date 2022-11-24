@@ -11,25 +11,42 @@ part 'doctor_referral_bloc.freezed.dart';
 
 class DoctorReferralBloc
     extends Bloc<DoctorReferralEvent, DoctorReferralState> {
-  DoctorReferralBloc() : super(const _Loading()) {
+  DoctorReferralBloc(@visibleForTesting dynamic referralApi)
+      : super(const _Loading()) {
     on<_GetReferralsByDoctorId>(
       (event, emit) async {
-        var referrals =
-            await ReferralApi.getReferralsByDoctorId(event.doctorId);
-        emit(_Loaded(referrals));
+        if (referralApi != null) {
+          var referrals =
+              await referralApi.getReferralsByDoctorId(event.doctorId);
+          emit(_Loaded(referrals));
+        } else {
+          var referrals =
+              await ReferralApi.getReferralsByDoctorId(event.doctorId);
+          emit(_Loaded(referrals));
+        }
       },
     );
 
     on<_AddNewReferral>(
       (event, emit) async {
-        var isSuccess = await ReferralApi.addNewReferral(event.newReferral);
-        if (isSuccess!) {
-          var prefs = await SharedPreferences.getInstance();
-          var referrals = await ReferralApi.getReferralsByDoctorId(
-              prefs.getString("doctorId"));
-          emit(_Loaded(referrals));
+        if (referralApi != null) {
+          var isSuccess = await referralApi.addNewReferral(event.newReferral);
+          if (isSuccess!) {
+            var referrals = await referralApi.getReferralsByDoctorId("docId");
+            emit(_Loaded(referrals));
+          } else {
+            emit(const _Error("Nem sikerült betölteni a recepteket."));
+          }
         } else {
-          emit(const _Error("Nem sikerült betölteni a recepteket."));
+          var isSuccess = await ReferralApi.addNewReferral(event.newReferral);
+          if (isSuccess!) {
+            var prefs = await SharedPreferences.getInstance();
+            var referrals = await ReferralApi.getReferralsByDoctorId(
+                prefs.getString("doctorId"));
+            emit(_Loaded(referrals));
+          } else {
+            emit(const _Error("Nem sikerült betölteni a recepteket."));
+          }
         }
       },
     );

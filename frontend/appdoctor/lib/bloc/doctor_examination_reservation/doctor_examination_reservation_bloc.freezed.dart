@@ -20,7 +20,8 @@ mixin _$DoctorExaminationReservationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String doctorId)
         getExaminationReservationsByDoctorId,
-    required TResult Function(ExaminationReservation newReferral)
+    required TResult Function(
+            NewExaminationReservation newExaminationReservation)
         addNewExaminationReservation,
     required TResult Function(String id, bool accept)
         acceptExaminationReservation,
@@ -31,7 +32,7 @@ mixin _$DoctorExaminationReservationEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
@@ -40,7 +41,7 @@ mixin _$DoctorExaminationReservationEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
@@ -178,7 +179,8 @@ class _$_GetExaminationReservationsByDoctorId
   TResult when<TResult extends Object?>({
     required TResult Function(String doctorId)
         getExaminationReservationsByDoctorId,
-    required TResult Function(ExaminationReservation newReferral)
+    required TResult Function(
+            NewExaminationReservation newExaminationReservation)
         addNewExaminationReservation,
     required TResult Function(String id, bool accept)
         acceptExaminationReservation,
@@ -192,7 +194,7 @@ class _$_GetExaminationReservationsByDoctorId
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
@@ -204,7 +206,7 @@ class _$_GetExaminationReservationsByDoctorId
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
@@ -284,9 +286,9 @@ abstract class _$$_AddNewExaminationReservationCopyWith<$Res> {
           _$_AddNewExaminationReservation value,
           $Res Function(_$_AddNewExaminationReservation) then) =
       __$$_AddNewExaminationReservationCopyWithImpl<$Res>;
-  $Res call({ExaminationReservation newReferral});
+  $Res call({NewExaminationReservation newExaminationReservation});
 
-  $ExaminationReservationCopyWith<$Res> get newReferral;
+  $NewExaminationReservationCopyWith<$Res> get newExaminationReservation;
 }
 
 /// @nodoc
@@ -304,20 +306,21 @@ class __$$_AddNewExaminationReservationCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? newReferral = freezed,
+    Object? newExaminationReservation = freezed,
   }) {
     return _then(_$_AddNewExaminationReservation(
-      newReferral == freezed
-          ? _value.newReferral
-          : newReferral // ignore: cast_nullable_to_non_nullable
-              as ExaminationReservation,
+      newExaminationReservation == freezed
+          ? _value.newExaminationReservation
+          : newExaminationReservation // ignore: cast_nullable_to_non_nullable
+              as NewExaminationReservation,
     ));
   }
 
   @override
-  $ExaminationReservationCopyWith<$Res> get newReferral {
-    return $ExaminationReservationCopyWith<$Res>(_value.newReferral, (value) {
-      return _then(_value.copyWith(newReferral: value));
+  $NewExaminationReservationCopyWith<$Res> get newExaminationReservation {
+    return $NewExaminationReservationCopyWith<$Res>(
+        _value.newExaminationReservation, (value) {
+      return _then(_value.copyWith(newExaminationReservation: value));
     });
   }
 }
@@ -325,14 +328,14 @@ class __$$_AddNewExaminationReservationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddNewExaminationReservation implements _AddNewExaminationReservation {
-  const _$_AddNewExaminationReservation(this.newReferral);
+  const _$_AddNewExaminationReservation(this.newExaminationReservation);
 
   @override
-  final ExaminationReservation newReferral;
+  final NewExaminationReservation newExaminationReservation;
 
   @override
   String toString() {
-    return 'DoctorExaminationReservationEvent.addNewExaminationReservation(newReferral: $newReferral)';
+    return 'DoctorExaminationReservationEvent.addNewExaminationReservation(newExaminationReservation: $newExaminationReservation)';
   }
 
   @override
@@ -340,13 +343,13 @@ class _$_AddNewExaminationReservation implements _AddNewExaminationReservation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AddNewExaminationReservation &&
-            const DeepCollectionEquality()
-                .equals(other.newReferral, newReferral));
+            const DeepCollectionEquality().equals(
+                other.newExaminationReservation, newExaminationReservation));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(newReferral));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(newExaminationReservation));
 
   @JsonKey(ignore: true)
   @override
@@ -359,40 +362,41 @@ class _$_AddNewExaminationReservation implements _AddNewExaminationReservation {
   TResult when<TResult extends Object?>({
     required TResult Function(String doctorId)
         getExaminationReservationsByDoctorId,
-    required TResult Function(ExaminationReservation newReferral)
+    required TResult Function(
+            NewExaminationReservation newExaminationReservation)
         addNewExaminationReservation,
     required TResult Function(String id, bool accept)
         acceptExaminationReservation,
     required TResult Function(String id, bool resolve)
         resolveExaminationReservation,
   }) {
-    return addNewExaminationReservation(newReferral);
+    return addNewExaminationReservation(newExaminationReservation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
   }) {
-    return addNewExaminationReservation?.call(newReferral);
+    return addNewExaminationReservation?.call(newExaminationReservation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
     required TResult orElse(),
   }) {
     if (addNewExaminationReservation != null) {
-      return addNewExaminationReservation(newReferral);
+      return addNewExaminationReservation(newExaminationReservation);
     }
     return orElse();
   }
@@ -450,10 +454,10 @@ class _$_AddNewExaminationReservation implements _AddNewExaminationReservation {
 abstract class _AddNewExaminationReservation
     implements DoctorExaminationReservationEvent {
   const factory _AddNewExaminationReservation(
-          final ExaminationReservation newReferral) =
+          final NewExaminationReservation newExaminationReservation) =
       _$_AddNewExaminationReservation;
 
-  ExaminationReservation get newReferral;
+  NewExaminationReservation get newExaminationReservation;
   @JsonKey(ignore: true)
   _$$_AddNewExaminationReservationCopyWith<_$_AddNewExaminationReservation>
       get copyWith => throw _privateConstructorUsedError;
@@ -540,7 +544,8 @@ class _$_AcceptExaminationReservation implements _AcceptExaminationReservation {
   TResult when<TResult extends Object?>({
     required TResult Function(String doctorId)
         getExaminationReservationsByDoctorId,
-    required TResult Function(ExaminationReservation newReferral)
+    required TResult Function(
+            NewExaminationReservation newExaminationReservation)
         addNewExaminationReservation,
     required TResult Function(String id, bool accept)
         acceptExaminationReservation,
@@ -554,7 +559,7 @@ class _$_AcceptExaminationReservation implements _AcceptExaminationReservation {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
@@ -566,7 +571,7 @@ class _$_AcceptExaminationReservation implements _AcceptExaminationReservation {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
@@ -722,7 +727,8 @@ class _$_ResolveExaminationReservation
   TResult when<TResult extends Object?>({
     required TResult Function(String doctorId)
         getExaminationReservationsByDoctorId,
-    required TResult Function(ExaminationReservation newReferral)
+    required TResult Function(
+            NewExaminationReservation newExaminationReservation)
         addNewExaminationReservation,
     required TResult Function(String id, bool accept)
         acceptExaminationReservation,
@@ -736,7 +742,7 @@ class _$_ResolveExaminationReservation
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,
@@ -748,7 +754,7 @@ class _$_ResolveExaminationReservation
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String doctorId)? getExaminationReservationsByDoctorId,
-    TResult Function(ExaminationReservation newReferral)?
+    TResult Function(NewExaminationReservation newExaminationReservation)?
         addNewExaminationReservation,
     TResult Function(String id, bool accept)? acceptExaminationReservation,
     TResult Function(String id, bool resolve)? resolveExaminationReservation,

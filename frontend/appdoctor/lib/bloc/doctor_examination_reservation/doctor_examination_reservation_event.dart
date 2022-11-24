@@ -6,7 +6,8 @@ class DoctorExaminationReservationEvent
   const factory DoctorExaminationReservationEvent.getExaminationReservationsByDoctorId(
       String doctorId) = _GetExaminationReservationsByDoctorId;
   const factory DoctorExaminationReservationEvent.addNewExaminationReservation(
-      ExaminationReservation newReferral) = _AddNewExaminationReservation;
+          NewExaminationReservation newExaminationReservation) =
+      _AddNewExaminationReservation;
   const factory DoctorExaminationReservationEvent.acceptExaminationReservation(
       String id, bool accept) = _AcceptExaminationReservation;
   const factory DoctorExaminationReservationEvent.resolveExaminationReservation(

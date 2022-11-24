@@ -6,6 +6,8 @@ import 'package:appdoctor/bloc/doctor_referral/doctor_referral_bloc.dart';
 import 'package:appdoctor/bloc/doctors/doctors_bloc.dart';
 import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
 import 'package:appdoctor/bloc/patient/patient_bloc.dart';
+import 'package:appdoctor/bloc/patient_receipt/patient_receipt_bloc.dart';
+import 'package:appdoctor/bloc/patient_referral/patient_referral_bloc.dart';
 import 'package:appdoctor/screens/auth/auth_screen.dart';
 import 'package:appdoctor/screens/examination_reservation/create_examination_reservation.dart';
 import 'package:appdoctor/screens/examination_reservation/examination_reservation_list.dart';
@@ -56,27 +58,36 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<MedicineBloc>(
           lazy: false,
-          create: (BuildContext context) => MedicineBloc(),
+          create: (BuildContext context) => MedicineBloc(null),
         ),
         BlocProvider<DiseaseBloc>(
           lazy: false,
-          create: (BuildContext context) => DiseaseBloc(),
+          create: (BuildContext context) => DiseaseBloc(null),
         ),
         BlocProvider<DoctorReceiptBloc>(
           lazy: false,
-          create: (BuildContext context) => DoctorReceiptBloc(),
+          create: (BuildContext context) => DoctorReceiptBloc(null),
         ),
         BlocProvider<DoctorReferralBloc>(
           lazy: false,
-          create: (BuildContext context) => DoctorReferralBloc(),
+          create: (BuildContext context) => DoctorReferralBloc(null),
         ),
         BlocProvider<DoctorExaminationReservationBloc>(
           lazy: false,
-          create: (BuildContext context) => DoctorExaminationReservationBloc(),
+          create: (BuildContext context) =>
+              DoctorExaminationReservationBloc(null),
         ),
         BlocProvider<DoctorsBloc>(
           lazy: false,
           create: (BuildContext context) => DoctorsBloc(),
+        ),
+        BlocProvider<PatientReceiptBloc>(
+          lazy: false,
+          create: (BuildContext context) => PatientReceiptBloc(null),
+        ),
+        BlocProvider<PatientReferralBloc>(
+          lazy: false,
+          create: (BuildContext context) => PatientReferralBloc(null),
         ),
       ],
       child: MaterialApp(

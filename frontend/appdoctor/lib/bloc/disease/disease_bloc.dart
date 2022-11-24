@@ -7,13 +7,23 @@ part 'disease_state.dart';
 part 'disease_bloc.freezed.dart';
 
 class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
-  DiseaseBloc() : super(const _LoadingDiseases()) {
+  DiseaseBloc(@visibleForTesting dynamic api)
+      : super(const _LoadingDiseases()) {
     on<_GetDiseases>((event, emit) async {
-      var diseases = await MedicineApi.getDiseases();
-      if (diseases != null) {
-        emit(_LoadedDiseases(diseases));
+      if (api != null) {
+        var diseases = await api.getDiseases();
+        if (diseases != null) {
+          emit(_LoadedDiseases(diseases));
+        } else {
+          emit(const _ErrorDiseases("Nem sikerült betölteni a gyógyszereket."));
+        }
       } else {
-        emit(const _ErrorDiseases("Nem sikerült betölteni a gyógyszereket."));
+        var diseases = await MedicineApi.getDiseases();
+        if (diseases != null) {
+          emit(_LoadedDiseases(diseases));
+        } else {
+          emit(const _ErrorDiseases("Nem sikerült betölteni a gyógyszereket."));
+        }
       }
     });
   }

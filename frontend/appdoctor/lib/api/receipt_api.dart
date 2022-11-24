@@ -27,6 +27,26 @@ class ReceiptApi {
     }
   }
 
+  static Future<List<Receipt>> getPatientRecipes(String patientId) async {
+    Uri getPatientUri =
+        Uri.parse("${Constants.receiptAddress.toString()}patient/$patientId");
+    final response = await http.get(
+      getPatientUri,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+    );
+    if (response.statusCode == 200) {
+      final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
+
+      return parsed.map<Receipt>((json) {
+        return Receipt.fromJson(json);
+      }).toList();
+    } else {
+      return [];
+    }
+  }
+
   static Future<bool?> addNewReceipt(
     NewReceipt receipt,
   ) async {

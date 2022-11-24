@@ -10,39 +10,74 @@ part 'medicine_bloc.freezed.dart';
 part 'medicine_bloc.g.dart';
 
 class MedicineBloc extends Bloc<MedicineEvent, MedicineState> {
-  MedicineBloc() : super(const _LoadingMedicinePreview()) {
+  MedicineBloc(@visibleForTesting dynamic api)
+      : super(const _LoadingMedicinePreview()) {
     on<_GetMedicinePreviews>((event, emit) async {
-      var medicines = await MedicineApi.getMedicines();
-      if (medicines != null) {
-        emit(_LoadedMedicinePreview(medicines));
+      if (api != null) {
+        var medicines = await api.getMedicines();
+        if (medicines != null) {
+          emit(_LoadedMedicinePreview(medicines));
+        } else {
+          emit(const _ErrorMedicinePreview(
+              "Nem sikerült betölteni a gyógyszereket."));
+        }
       } else {
-        emit(const _ErrorMedicinePreview(
-            "Nem sikerült betölteni a gyógyszereket."));
+        var medicines = await MedicineApi.getMedicines();
+        if (medicines != null) {
+          emit(_LoadedMedicinePreview(medicines));
+        } else {
+          emit(const _ErrorMedicinePreview(
+              "Nem sikerült betölteni a gyógyszereket."));
+        }
       }
     });
 
     on<_AddNewMedicine>(
       (event, emit) async {
-        var created = await MedicineApi.addNewMedicine(
-            event.name, event.diseases, event.inStock);
+        if (api != null) {
+          var created = await api.addNewMedicine(
+              event.name, event.diseases, event.inStock);
 
-        if (created != null) {
-          emit(const _LoadingMedicinePreview());
-          if (created) {
-            var medicines = await MedicineApi.getMedicines();
-            if (medicines != null) {
-              emit(_LoadedMedicinePreview(medicines));
+          if (created != null) {
+            emit(const _LoadingMedicinePreview());
+            if (created) {
+              var medicines = await api.getMedicines();
+              if (medicines != null) {
+                emit(_LoadedMedicinePreview(medicines));
+              } else {
+                emit(const _ErrorMedicinePreview(
+                    "Nem sikerült betölteni a gyógyszereket."));
+              }
             } else {
               emit(const _ErrorMedicinePreview(
-                  "Nem sikerült betölteni a gyógyszereket."));
+                  "Nem sikerült a gyógyszer hozzáadása."));
             }
           } else {
             emit(const _ErrorMedicinePreview(
-                "Nem sikerült a gyógyszer hozzáadása."));
+                "Nem sikerült a gyógyszer hozzáadásának feldolgozása a szerveren."));
           }
         } else {
-          emit(const _ErrorMedicinePreview(
-              "Nem sikerült a gyógyszer hozzáadásának feldolgozása a szerveren."));
+          var created = await MedicineApi.addNewMedicine(
+              event.name, event.diseases, event.inStock);
+
+          if (created != null) {
+            emit(const _LoadingMedicinePreview());
+            if (created) {
+              var medicines = await MedicineApi.getMedicines();
+              if (medicines != null) {
+                emit(_LoadedMedicinePreview(medicines));
+              } else {
+                emit(const _ErrorMedicinePreview(
+                    "Nem sikerült betölteni a gyógyszereket."));
+              }
+            } else {
+              emit(const _ErrorMedicinePreview(
+                  "Nem sikerült a gyógyszer hozzáadása."));
+            }
+          } else {
+            emit(const _ErrorMedicinePreview(
+                "Nem sikerült a gyógyszer hozzáadásának feldolgozása a szerveren."));
+          }
         }
       },
     );

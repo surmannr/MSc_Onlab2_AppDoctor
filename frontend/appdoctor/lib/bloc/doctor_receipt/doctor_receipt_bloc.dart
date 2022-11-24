@@ -10,23 +10,41 @@ part 'doctor_receipt_state.dart';
 part 'doctor_receipt_bloc.freezed.dart';
 
 class DoctorReceiptBloc extends Bloc<DoctorReceiptEvent, DoctorReceiptState> {
-  DoctorReceiptBloc() : super(const _LoadingDoctorReceiptState()) {
+  DoctorReceiptBloc(@visibleForTesting dynamic receiptApi)
+      : super(const _LoadingDoctorReceiptState()) {
     on<_GetReceiptsByDoctorId>(
       (event, emit) async {
-        var recipes = await ReceiptApi.getRecipes(event.doctorId);
-        emit(_LoadedDoctorReceiptState(recipes));
+        if (receiptApi != null) {
+          var recipes = await receiptApi.getRecipes(event.doctorId);
+          emit(_LoadedDoctorReceiptState(recipes));
+        } else {
+          var recipes = await ReceiptApi.getRecipes(event.doctorId);
+          emit(_LoadedDoctorReceiptState(recipes));
+        }
       },
     );
 
     on<_AddNewReceipt>(
       (event, emit) async {
-        var isSuccess = await ReceiptApi.addNewReceipt(event.newReceipt);
-        if (isSuccess!) {
-          var recipes = await ReceiptApi.getRecipes(event.newReceipt.doctorId);
-          emit(_LoadedDoctorReceiptState(recipes));
+        if (receiptApi != null) {
+          var isSuccess = receiptApi.addNewReceipt(event.newReceipt) as bool;
+          if (isSuccess == true) {
+            var recipes = receiptApi.getRecipes(event.newReceipt.doctorId);
+            emit(_LoadedDoctorReceiptState(recipes));
+          } else {
+            emit(const _ErrorDoctorReceiptState(
+                "Nem sikerült betölteni a recepteket."));
+          }
         } else {
-          emit(const _ErrorDoctorReceiptState(
-              "Nem sikerült betölteni a recepteket."));
+          var isSuccess = await ReceiptApi.addNewReceipt(event.newReceipt);
+          if (isSuccess!) {
+            var recipes =
+                await ReceiptApi.getRecipes(event.newReceipt.doctorId);
+            emit(_LoadedDoctorReceiptState(recipes));
+          } else {
+            emit(const _ErrorDoctorReceiptState(
+                "Nem sikerült betölteni a recepteket."));
+          }
         }
       },
     );
