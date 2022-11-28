@@ -1,31 +1,30 @@
+import 'package:appdoctor/bloc/doctor_referral/doctor_referral_bloc.dart';
 import 'package:appdoctor/bloc/patient_referral/patient_referral_bloc.dart';
-import 'package:appdoctor/menu/appatient_drawer.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/menu/appdoc_drawer.dart';
 import 'package:appdoctor/screens/_common_widgets/referral_tile.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PatientReferralList extends StatefulWidget {
-  const PatientReferralList({super.key});
+class DoctorReferralList extends StatefulWidget {
+  const DoctorReferralList({super.key});
 
-  static const routeName = '/patient-referral-list';
+  static const routeName = '/doctor-referral-list';
 
   @override
-  State<PatientReferralList> createState() => _PatientReferralListState();
+  State<DoctorReferralList> createState() => _DoctorReferralListState();
 }
 
-class _PatientReferralListState extends State<PatientReferralList> {
+class _DoctorReferralListState extends State<DoctorReferralList> {
   @override
   void didChangeDependencies() {
     SharedPreferences.getInstance().then((value) {
       setState(() {
-        var patientId = value.getString("patientId");
-        BlocProvider.of<PatientReferralBloc>(context).add(
-          PatientReferralEvent.getReferralsByPatientId(patientId),
+        var doctorId = value.getString("doctorId");
+        BlocProvider.of<DoctorReferralBloc>(context).add(
+          DoctorReferralEvent.getReferralsByDoctorId(doctorId),
         );
       });
     });
@@ -36,21 +35,21 @@ class _PatientReferralListState extends State<PatientReferralList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
-      drawer: AppPatientDrawer(),
-      body: BlocBuilder<PatientReferralBloc, PatientReferralState>(
+      drawer: AppDocDrawer(),
+      body: BlocBuilder<DoctorReferralBloc, DoctorReferralState>(
         builder: (context, state) {
           return state.when(
-            loading: (() {
+            loadingDoctorReferrals: (() {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }),
-            error: (message) {
+            errorDoctorReferral: (message) {
               return Center(
                 child: Text(message),
               );
             },
-            loaded: ((referrals) {
+            loadedDoctorReferrals: ((referrals) {
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),

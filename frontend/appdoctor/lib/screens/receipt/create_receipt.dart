@@ -3,11 +3,13 @@ import 'package:appdoctor/api/user_api.dart';
 import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
 import 'package:appdoctor/bloc/doctor_receipt/doctor_receipt_bloc.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/menu/appdoc_drawer.dart';
 import 'package:appdoctor/models/medicine/medicine_preview.dart';
 import 'package:appdoctor/models/medicine/medicine_receipt.dart';
 import 'package:appdoctor/models/receipt/new_receipt.dart';
 import 'package:appdoctor/models/receipt/receipt.dart';
 import 'package:appdoctor/models/users/patient_preview.dart';
+import 'package:appdoctor/screens/_common_widgets/chips.dart';
 import 'package:appdoctor/screens/_common_widgets/top_image_widget.dart';
 import 'package:appdoctor/screens/welcome_doctor_screen.dart';
 import 'package:appdoctor/styles/colors.dart';
@@ -36,6 +38,12 @@ class _CreateReceiptState extends State<CreateReceipt> {
 
   String? patientId;
   List<MedicineReceipt> selectedMedicines = [];
+
+  void removeMedicine(MedicineReceipt receipt) {
+    setState(() {
+      selectedMedicines.removeWhere(((element) => element.id == receipt.id));
+    });
+  }
 
   @override
   void didChangeDependencies() {
@@ -67,6 +75,7 @@ class _CreateReceiptState extends State<CreateReceipt> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
+      drawer: AppDocDrawer(),
       body: BlocBuilder<DoctorBloc, DoctorState>(
         builder: (context, state) {
           return state.when(
@@ -220,24 +229,16 @@ class _CreateReceiptState extends State<CreateReceipt> {
                                             .toList();
                                       });
                                     },
-                                    chipDisplay: MultiSelectChipDisplay(
-                                      chipColor: AppDoctorStyles.cardColor,
-                                      textStyle: const TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                      onTap: (value) {
-                                        setState(() {
-                                          selectedMedicines
-                                              .remove(value as MedicineReceipt);
-                                        });
-                                      },
-                                    ),
+                                    chipDisplay: MultiSelectChipDisplay.none(),
                                   );
                                 } else {
                                   return const Text("Nincs gyógyszer.");
                                 }
                               },
                             ),
+                            MedicineChips(
+                                selectedMedicines: selectedMedicines,
+                                removeMedicine: removeMedicine),
                             ...selectedMedicines.map((e) {
                               return Column(
                                 children: [

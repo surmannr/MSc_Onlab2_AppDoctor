@@ -1,4 +1,5 @@
 import 'package:appdoctor/bloc/patient_receipt/patient_receipt_bloc.dart';
+import 'package:appdoctor/menu/appatient_drawer.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
 import 'package:appdoctor/screens/_common_widgets/receipt_tile.dart';
 import 'package:appdoctor/styles/colors.dart';
@@ -33,6 +34,7 @@ class _PatientReceiptListState extends State<PatientReceiptList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
+      drawer: AppPatientDrawer(),
       body: BlocBuilder<PatientReceiptBloc, PatientReceiptState>(
         builder: (context, state) {
           return state.when(

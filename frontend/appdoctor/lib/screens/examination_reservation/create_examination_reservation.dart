@@ -1,5 +1,6 @@
 import 'package:appdoctor/bloc/doctor_examination_reservation/doctor_examination_reservation_bloc.dart';
 import 'package:appdoctor/bloc/doctors/doctors_bloc.dart';
+import 'package:appdoctor/menu/appatient_drawer.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
 import 'package:appdoctor/models/examinationReservation/new_examination_reservation.dart';
 import 'package:appdoctor/screens/_common_widgets/top_image_widget.dart';
@@ -74,6 +75,7 @@ class _CreateExaminationReservationState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
+      drawer: AppPatientDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [

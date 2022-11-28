@@ -1,6 +1,7 @@
 import 'package:appdoctor/api/examination_reservation_api.dart';
 import 'package:appdoctor/bloc/doctor_referral/doctor_referral_bloc.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/menu/appdoc_drawer.dart';
 import 'package:appdoctor/models/examinationReservation/examination_reservation.dart';
 import 'package:appdoctor/models/referral/new_referral.dart';
 import 'package:appdoctor/screens/_common_widgets/top_image_widget.dart';
@@ -68,6 +69,7 @@ class _CreateReferralState extends State<CreateReferral> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
+      drawer: AppDocDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [

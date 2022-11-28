@@ -1,5 +1,6 @@
 import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/menu/appdoc_drawer.dart';
 import 'package:appdoctor/screens/medicine/add-medicine.dart';
 import 'package:appdoctor/screens/medicine/widgets/medicine_tile.dart';
 import 'package:appdoctor/styles/colors.dart';
@@ -30,6 +31,7 @@ class _MedicineListState extends State<MedicineList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
+      drawer: AppDocDrawer(),
       body: BlocBuilder<MedicineBloc, MedicineState>(builder: (context, state) {
         return state.when(loadingMedicinePreviews: () {
           return const Center(

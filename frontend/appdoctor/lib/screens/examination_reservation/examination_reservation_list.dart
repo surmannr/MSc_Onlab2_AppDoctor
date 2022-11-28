@@ -1,5 +1,6 @@
 import 'package:appdoctor/bloc/doctor_examination_reservation/doctor_examination_reservation_bloc.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/menu/appdoc_drawer.dart';
 import 'package:appdoctor/screens/examination_reservation/widgets/examination_reservation_tile.dart';
 import 'package:appdoctor/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class _ExaminationReservationListState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
+      drawer: AppDocDrawer(),
       body: BlocBuilder<DoctorExaminationReservationBloc,
           DoctorExaminationReservationState>(
         builder: ((context, state) {

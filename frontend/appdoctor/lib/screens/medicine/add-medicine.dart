@@ -1,6 +1,7 @@
 import 'package:appdoctor/bloc/disease/disease_bloc.dart';
 import 'package:appdoctor/bloc/medicine/medicine_bloc.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/menu/appdoc_drawer.dart';
 import 'package:appdoctor/screens/_common_widgets/top_image_widget.dart';
 import 'package:appdoctor/screens/medicine/medicine_list.dart';
 import 'package:appdoctor/styles/widget_styles.dart';
@@ -54,6 +55,7 @@ class _AddMedicineState extends State<AddMedicine> {
       tag: "add-medicine",
       child: Scaffold(
         appBar: AppDocAppBar(),
+        drawer: AppDocDrawer(),
         body: BlocBuilder<DiseaseBloc, DiseaseState>(
           builder: (context, state) {
             return state.when(loadingDiseases: (() {

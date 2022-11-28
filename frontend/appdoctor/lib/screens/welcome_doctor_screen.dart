@@ -1,5 +1,6 @@
 import 'package:appdoctor/bloc/doctor/doctor_bloc.dart';
 import 'package:appdoctor/menu/appdoc_appbar.dart';
+import 'package:appdoctor/menu/appdoc_drawer.dart';
 import 'package:appdoctor/screens/examination_reservation/examination_reservation_list.dart';
 import 'package:appdoctor/screens/medicine/medicine_list.dart';
 import 'package:appdoctor/screens/receipt/create_receipt.dart';
@@ -22,6 +23,7 @@ class _WelcomeDoctorScreenState extends State<WelcomeDoctorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppDocAppBar(),
+      drawer: AppDocDrawer(),
       body: BlocBuilder<DoctorBloc, DoctorState>(
         builder: (context, state) {
           return state.when(
